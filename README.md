@@ -35,7 +35,7 @@
 肌悩みがあり自分の力では解決できない時にこのアプリを参考にスキンケア製品を見つけて解決したい時に利用して欲しいです。
 ​
 ## 設計書
-![ER図 (1)](https://github.com/xxkrxx/MensGoodSkinclub/assets/143770189/6642e73f-ff0b-4210-a8d2-07cad861b3b5)
+![ER図](https://github.com/xxkrxx/MensGoodSkinclub/assets/143770189/d09dce4d-1bec-4614-a2f1-c1a2b46221c8)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
