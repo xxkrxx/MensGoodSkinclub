@@ -1,0 +1,2 @@
+class SkinConcern < ApplicationRecord
+end

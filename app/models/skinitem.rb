@@ -1,0 +1,2 @@
+class Skinitem < ApplicationRecord
+end
