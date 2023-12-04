@@ -11,16 +11,18 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
+  # 管理者用
   namespace :admin do
     root to: 'homes#top'
     resources :skinitems, only: [:index, :new, :show, :edit]
   end
 
-
-  root to:  'public/homes#top'
+  # 顧客用
+  scope module: :public do
+  root to:  'homes#top'
   get 'about' => 'homes#about'
   resources :posts, only: [:index, :new, :show,:edit]
-  resource :users
-    
+  resources :users
+  end
     
 end

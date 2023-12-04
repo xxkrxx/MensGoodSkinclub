@@ -1,1 +1,13 @@
-@use '~bootstrap/scss/bootstrap';
+// 変数のカスタマイズ
+
+$success: #4f4d4a;
+
+// SCSSをインポート
+@import '~bootstrap/scss/bootstrap';
+
+
+/* 背景色を指定 */
+body {
+  background-color: #b8b9b6; 
+}
+
