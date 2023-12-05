@@ -1,57 +1,39 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/"><span>Bookers</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-        <% if user_signed_in? %>
-          <li>
-            <%= link_to user_path(current_user),class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> Home
-            <% end %>
-          </li>
-          <li>
-            <%=  link_to users_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-users"></i> Users
-            <% end %>
-          </li>
-          <li>
-            <%=  link_to books_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> Books
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-out-alt"></i> Log out
-            <% end %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to root_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> Home
-            <% end %>
-          </li>
-          <li>
-            <%= link_to home_about_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-link"></i> About
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-user-plus"></i> Sign up
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-in-alt"></i> Log in
-            <% end %>
-          </li>
+    <div class="navbar navbar-expand-lg bg-dark">
+        
+        <%= link_to root_path, class: "navbar-item", style: "text-decoration: none;" do %>
+        <h2 class="title ml-4 my-3 'nav-link text-light" style="font-family: Georgia, serif;">MensGoodSkinclub</h2>
         <% end %>
-        </ul>
-      </div>
+        
+        <% if admin_signed_in? %>
+        <div class="ml-auto">
+          <div class="d-flex">
+          <%= link_to 'Products',admin_skinitems_path,class: 'nav-link text-light mr-5' %>
+          <%= link_to 'Review', posts_path,class: 'nav-link text-light mr-5' %>
+          <%= link_to 'Review User', users_path,class: 'nav-link text-light mr-5' %>
+          <%= link_to 'Log out',destroy_admin_session_path, method: :delete,class: 'nav-link text-light mr-5' %>
+          </div>  
+        </div>
+        <% elsif user_signed_in? %>
+        <div class="ml-auto">
+            <div class="d-flex">
+              <%= link_to 'Products', skinitems_path,class: 'nav-link text-light mr-5'%>
+              <%= link_to 'Review', posts_path,class: 'nav-link text-light mr-5' %>
+              <%= link_to 'Review User', users_path,class: 'nav-link text-light mr-5' %>
+              <%= link_to 'My page', user_path(current_user),class: 'nav-link text-light mr-5' %>
+              <%= link_to 'Log out', destroy_user_session_path, method: :delete,class: 'nav-link text-light' %>
+            </div>
+        </div>
+        <% else %>
+        <div class="ml-auto">
+            <div class="d-flex">
+              <%= link_to 'About', about_path,class: 'btn btn-warning text-White mr-5'%>
+              <%= link_to 'Review', posts_path,class: 'btn btn-warning text-White mr-5' %>
+              <%= link_to 'Sign up', new_user_registration_path,class: 'btn btn-warning text-White mr-5' %>
+              <%= link_to 'Log in', new_user_session_path,class: 'btn btn-warning text-White mr-5' %>
+            </div>  
+        </div>
+        <% end %>
+        
     </div>
-  </nav>
 </header>

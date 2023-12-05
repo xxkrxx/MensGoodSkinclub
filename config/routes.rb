@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about'
   resources :posts, only: [:index, :new, :show,:edit]
   resources :users
+  resources :skinitems, only: [:index, :show]
   end
     
 end
