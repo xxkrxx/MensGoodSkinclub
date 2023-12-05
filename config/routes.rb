@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :skinitems, only: [:index, :new, :show, :edit]
+    resources :users, only: [:index, :show, :edit]
   end
 
   # 顧客用
