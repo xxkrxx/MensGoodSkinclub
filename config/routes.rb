@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   root to:  'homes#top'
   get 'about' => 'homes#about'
   resources :posts, only: [:index, :new, :show,:edit]
-  resources :users
+  resources :users, only: [:index, :show, :edit, :check]
   resources :skinitems, only: [:index, :show]
   end
-    
+
 end
