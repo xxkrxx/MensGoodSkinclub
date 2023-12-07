@@ -1,2 +1,16 @@
-<h1>Public::Posts#new</h1>
-<p>Find me in app/views/public/posts/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+       <h1 class="mt-4"><strong> 新規投稿画面</strong></h1>
+        <%= form_with model: @user, url: user_path do |f| %>
+        
+        <div class="form-row mt-5">
+          <span class="form-group col-3">商品名</span>
+          <div class="form-group col-3">
+            <%= f.text_fild 
+          </div>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>

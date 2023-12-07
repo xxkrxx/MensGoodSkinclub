@@ -18,14 +18,18 @@
           <h3><%= @user.name %></h3><!--名前-->
           <p><%= @user.profile %></p><!--プロフィールコメント-->
           <p><%= @user.skin_concerns_id %></p><!--肌悩み-->
-           <% if @user == current_user %>
-             <div class="row">
-                <%= @user.email  %>
-                <%= link_to "プロフィールを編集", edit_user_path, class: "btn btn-outline-dark common-btn edit-profile-btn" %>
-               </p>
-             </div>
-           <% end %>
+          <p><%= @user.email  %></p>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+         <% if @user == current_user %>
+            <%= link_to "プロフィールを編集", edit_user_path, class: "btn btn-info" %>
+         <% end %>
+      </div>
+      <div class="col-6">
+        <%= link_to "レビュー投稿する",new_post_path, class: "btn btn-success" %></h4>
       </div>
     </div>
   </div>

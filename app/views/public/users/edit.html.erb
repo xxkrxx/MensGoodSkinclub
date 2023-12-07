@@ -5,7 +5,7 @@
 
      <%= render "public/shared/error_messages", resource: @user %>
 
-     <%= form_with model: @user, url: edit_user_path do |f| %>
+     <%= form_with model: @user, url: user_path do |f| %>
 
        <div class="form-row mt-5">
         <span class="form-group col-3">ユーザー名</span>
@@ -32,7 +32,7 @@
       <div class="form-row">
         <span class="form-group col-3">プロフィール</span>
         <div class="form-group col-4">
-          <%= f.text_area :content, class: "form-control", rows: 5 %>
+          <%= f.text_area :profile, class: "form-control", rows: 5 %>
         </div>
       </div>
 
