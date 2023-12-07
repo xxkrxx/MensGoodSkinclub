@@ -1,2 +1,36 @@
-<h1>Admin::Skinitems#index</h1>
-<p>Find me in app/views/admin/skinitems/index.html.erb</p>
+<div class="container">
+ <div class="row main-row">
+   <div class="col-12 mx-auto">
+    <h2 class="d-flex justify-content-between title mt-4">RecommendationProducts</h2>
+    
+    <table class='table'>
+        <thead class="table-dark">
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>肌悩み</th>
+            <th>カテゴリー</th>
+          </tr>
+        </thead>  
+          <!--テーブル本体-->
+          <tbody>
+            <% @skinitems.each do |skinitem| %>
+            <tr>
+              <td><%= skinitem.id admin_skinitem_path(skinitem.id) %></td>
+        
+              <td><%= link_to skinitem.productname admin_skinitem_path(skinitem.id), class: "text-decoration-none" %></td>
+              
+              <td><%= skinitem.skin_concern %></td>
+              
+              <td><%= skinitem.product_category %></td>
+              
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+   </div>
+</div>
+
+

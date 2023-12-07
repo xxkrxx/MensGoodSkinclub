@@ -14,15 +14,15 @@ Rails.application.routes.draw do
   # 管理者用
   namespace :admin do
     root to: 'homes#top'
-    resources :skinitems, only: [:index, :new, :show, :edit]
-    resources :users, only: [:index, :show, :edit]
+    resources :skinitems
+    resources :users, only: [:index, :show, :edit, :upate]
   end
 
   # 顧客用
   scope module: :public do
   root to:  'homes#top'
   get 'about' => 'homes#about'
-  resources :posts, only: [:index, :new, :show,:edit]
+  resources :posts
   resources :users, only: [:index, :show, :edit, :check, :update]
   resources :skinitems, only: [:index, :show]
   end

@@ -11,4 +11,12 @@ class Public::PostsController < ApplicationController
 
   def edit
   end
+  
+  
+private
+
+  def post_params
+    params.require(:post).permit(:productname, :image, :comment, :categories_id, :skinconcernss_id, :star)
+
+  end
 end
