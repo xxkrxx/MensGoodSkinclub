@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 2023_12_03_095020) do
     t.integer "skinconcernss_id"
     t.string "productname"
     t.text "introduction"
-    t.text "thoughts"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

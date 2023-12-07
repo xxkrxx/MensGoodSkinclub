@@ -5,7 +5,6 @@ class CreateSkinitems < ActiveRecord::Migration[6.1]
       t.integer :skinconcernss_id
       t.string :productname
       t.text :introduction
-      t.text :thoughts
 
       t.timestamps
     end
