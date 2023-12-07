@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2023_12_03_095020) do
     t.integer "categories_id"
     t.integer "skinconcernss_id"
     t.string "productname"
-    t.float "evaluation"
+    t.string "star"
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

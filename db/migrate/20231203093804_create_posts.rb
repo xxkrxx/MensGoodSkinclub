@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.integer :categories_id
       t.integer :skinconcernss_id
       t.string :productname
-      t.float :evaluation
+      t.string :star
       t.text :comment
 
       t.timestamps
