@@ -7,34 +7,34 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="profile-wrap">
-    <div class="row">
-      <div class="col--md-4 text-center">
-       <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", class: "round-img" %>
-      </div>
-      <div class="col-md-3 mt-4 ml-4">
-        <div class="row">
-          <div class="text-center">
-            <h3><%= @user.name %></h3><!--名前-->
-            <p><%= @user.email  %></p>
-            <p><%= @user.profile %></p><!--プロフィールコメント-->
-          </div>
+
+<section class="section">
+  <div class="container">
+    <div class="justify-content-center">
+      <div class="row">
+        <div class="col-md-4 mt-4 ml-4">
+        <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", class: "round-img" %>  
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-6 p-0">
-         <% if @user == current_user %>
-            <%= link_to "プロフィールを編集", edit_user_path, class: "btn btn-info" %>
-         <% end %>
+        <div class="col-7">
+          <table class="table d-inline">
+            <tr>
+            <td class="h4">
+              <strong><%= @user.name %></strong>
+            </td>  
+              <% if @user.id == current_user.id %>
+              <td class="h4">
+                <%= @user.email %>
+              </td>
+              <td>
+              <%= link_to "レビュー投稿する",new_post_path, class: "btn btn-success" %></h4>
+              </td>
+              <% end %>
+            </tr> 
+          </table>
+        </div>  
       </div>
     </div>
   </div>
-  <div>
-  <div class="row justify-content-end">
-      <%= link_to "レビュー投稿する",new_post_path, class: "btn btn-success" %></h4>
-    </div>
-  </div>
-</div>
+</section>
+
 
