@@ -25,7 +25,7 @@ class Public::SessionsController < Devise::SessionsController
 
    #サインインするときのカラムの許可
    def configure_sign_in_params
-     devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
+     devise_parameter_sanitizer.permit(:sign_in, keys: [:emai])
    end
 
 

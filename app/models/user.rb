@@ -7,7 +7,6 @@ class User < ApplicationRecord
          has_one_attached :image
          
   has_many :posts
-  belongs_to :skin_concerns_id
   
   attachment :profile_image
 end

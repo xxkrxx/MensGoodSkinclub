@@ -15,22 +15,26 @@
       </div>
       <div class="col-md-3 mt-4 ml-4">
         <div class="row">
-          <h3><%= @user.name %></h3><!--名前-->
-          <p><%= @user.profile %></p><!--プロフィールコメント-->
-          <p><%= @user.skin_concerns_id %></p><!--肌悩み-->
-          <p><%= @user.email  %></p>
+          <div class="text-center">
+            <h3><%= @user.name %></h3><!--名前-->
+            <p><%= @user.email  %></p>
+            <p><%= @user.profile %></p><!--プロフィールコメント-->
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-6">
+      <div class="col-6 p-0">
          <% if @user == current_user %>
             <%= link_to "プロフィールを編集", edit_user_path, class: "btn btn-info" %>
          <% end %>
       </div>
-      <div class="col-6">
-        <%= link_to "レビュー投稿する",new_post_path, class: "btn btn-success" %></h4>
-      </div>
+    </div>
+  </div>
+  <div>
+  <div class="row justify-content-end">
+      <%= link_to "レビュー投稿する",new_post_path, class: "btn btn-success" %></h4>
     </div>
   </div>
 </div>
+

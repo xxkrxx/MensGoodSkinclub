@@ -18,13 +18,13 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path(@user)
-  end  
-  
-  
+  end
+
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :profile , :profile_image)
+    params.require(:user).permit(:name, :email, :profile , :profile_image )
   end
-  
+
 end

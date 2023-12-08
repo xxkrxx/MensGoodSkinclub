@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2023_12_03_095020) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
+    t.string "categoriesname"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2023_12_03_095020) do
   end
 
   create_table "skin_concerns", force: :cascade do |t|
-    t.string "name"
+    t.string "skinconcernsname"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

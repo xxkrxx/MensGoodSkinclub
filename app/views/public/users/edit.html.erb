@@ -24,7 +24,7 @@
       <div class="form-row">
         <span class="form-group col-3">肌悩み</span>
         <div class="form-group col-3">
-          <%= f.select :skin_concern, [["ニキビ", "ニキビ"], ["毛穴", "毛穴"], ["美白", "美白"]], { include_blank: "選択してください" }, { class: "form-control w-100" } %>
+          <%= f.select :skin_concerns_id, [["ニキビ", 1], ["毛穴", 2], ["美白", 3]], { include_blank: "選択してください" }, { class: "form-control w-100" } %>
         </div>
       </div>
 

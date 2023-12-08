@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :skinitems
     resources :users, only: [:index, :show, :edit, :upate]
+    resources :categories
+    resources :skinconcerns
   end
 
   # 顧客用
