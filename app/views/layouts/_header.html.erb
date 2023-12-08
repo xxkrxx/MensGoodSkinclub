@@ -1,18 +1,18 @@
 <header>
     <div class="navbar navbar-expand-lg bg-dark">
-        
+
         <%= link_to root_path, class: "navbar-item", style: "text-decoration: none;" do %>
         <h2 class="title ml-4 my-3 'nav-link text-light" style="font-family: Georgia, serif;">MensGoodSkinclub</h2>
         <% end %>
-        
+
         <% if admin_signed_in? %>
         <div class="ml-auto">
           <div class="d-flex">
           <%= link_to 'Products',admin_skinitems_path,class: 'nav-link text-light mr-5' %>
           <%= link_to 'Review', posts_path,class: 'nav-link text-light mr-5' %>
-          <%= link_to 'Review User', users_path,class: 'nav-link text-light mr-5' %>
+          <%= link_to 'Review User', admin_users_path,class: 'nav-link text-light mr-5' %>
           <%= link_to 'Log out',destroy_admin_session_path, method: :delete,class: 'nav-link text-light mr-5' %>
-          </div>  
+          </div>
         </div>
         <% elsif user_signed_in? %>
         <div class="ml-auto">
@@ -31,9 +31,9 @@
               <%= link_to 'Review', posts_path,class: 'btn btn-warning text-White mr-5' %>
               <%= link_to 'Sign up', new_user_registration_path,class: 'btn btn-warning text-White mr-5' %>
               <%= link_to 'Log in', new_user_session_path,class: 'btn btn-warning text-White mr-5' %>
-            </div>  
+            </div>
         </div>
         <% end %>
-        
+
     </div>
 </header>
