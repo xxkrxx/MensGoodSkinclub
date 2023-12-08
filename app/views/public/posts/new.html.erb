@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-       <h1 class="mt-4"><strong> 新規投稿画面</strong></h1>
+       <h1 class="mt-4"><strong> 新規レビュー投稿画面</strong></h1>
         <%= form_with model: @user, url: posts_path do |f| %>
 
         <div class="form-row mt-5">
@@ -25,58 +25,58 @@
           </div>
         </div>
 
-        <div class="form-row mt-3">
-          <span class="col-3">肌悩み　商品カテゴリー</span>
-          <%= f.select :faculty, [["ニキビ", "ニキビ"], ["毛穴", "毛穴"], ["美白", "美白"]], include_blank: "選択して下さい" %>
-          <%= f.select :faculty, [["洗顔", "洗顔"], ["化粧水", "化粧水"], ["美容液", "美容液"], ["クリーム", "クリーム"]], include_blank: "選択して下さい" %>
-          </div>
+        <!--<div class="form-row mt-3">-->
+        <!--  <span class="col-3">肌悩み　商品カテゴリー</span>-->
+        <!--  <#%= f.select :faculty, [["ニキビ", "ニキビ"], ["毛穴", "毛穴"], ["美白", "美白"]], include_blank: "選択して下さい" %>-->
+        <!--  <#%= f.select :faculty, [["洗顔", "洗顔"], ["化粧水", "化粧水"], ["美容液", "美容液"], ["クリーム", "クリーム"]], include_blank: "選択して下さい" %>-->
+        <!--  </div>-->
 
-        <div class="form-row mt-3">
-          <span class="col-3">評価</span>
-          <% if @user.id.nil? %>
-              <div class="form-group" id="star">
-                <%= f.label :star %>
-                <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
-                <div id="post_raty"></div>
-              </div>
-               <script>
-                $(document).on('turbolinks:load', function() {
-                  let elem = document.querySelector('#post_raty');
-                  if (elem == null) return;
+        <!--<div class="form-row mt-3">-->
+        <!--  <span class="col-3">評価</span>-->
+        <!--  <#% if @user.id.nil? %>-->
+        <!--      <div class="form-group" id="star">-->
+        <!--        <#%= f.label :star %>-->
+        <!--        <#%= f.hidden_field :star, id: :review_star, class: 'form-control' %>-->
+        <!--        <div id="post_raty"></div>-->
+        <!--      </div>-->
+        <!--       <script>-->
+        <!--        $(document).on('turbolinks:load', function() {-->
+        <!--          let elem = document.querySelector('#post_raty');-->
+        <!--          if (elem == null) return;-->
 
-                  elem.innerHTML = ""
-                  let opt = {
-                    starOn: "<%= asset_path('star-on.png') %>",
-                    starOff: "<%= asset_path('star-off.png') %>",
-                    starHalf: "<%= asset_path('star-half.png') %>",
-                    scoreName: 'book[star]',
-                  };
-                  raty(elem, opt);
-                });
-                </script>
-            <% else %>
-            <div claas="form-group col-3">
-                <div id="star_<%= user.id %>"></div>
-              <script>
-              $(document).on('turbolinks:load', function() {
-                let elem = document.querySelector('#star_<%= user.id %>');
-                if (elem == null) return;
+        <!--          elem.innerHTML = ""-->
+        <!--          let opt = {-->
+        <!--            starOn: "<#%= asset_path('star-on.png') %>",-->
+        <!--            starOff: "<#%= asset_path('star-off.png') %>",-->
+        <!--            starHalf: "<#%= asset_path('star-half.png') %>",-->
+        <!--            scoreName: 'book[star]',-->
+        <!--          };-->
+        <!--          raty(elem, opt);-->
+        <!--        });-->
+        <!--        </script>-->
+        <!--    <#% else %>-->
+        <!--    <div claas="form-group col-3">-->
+        <!--        <div id="star_<#= user.id %>"></div>-->
+        <!--      <script>-->
+        <!--      $(document).on('turbolinks:load', function() {-->
+        <!--        let elem = document.querySelector('#star_<#%= user.id %>');-->
+        <!--        if (elem == null) return;-->
 
-                elem.innerHTML = "";
-                let opt = {
-                  starOn: "<%= asset_path('star-on.png') %>",
-                  starOff: "<%= asset_path('star-off.png') %>",
-                  starHalf: "<%= asset_path('star-half.png') %>",
-                  score: "<%= book.star %>",
-                  readOnly: true,
-                };
-                raty(elem, opt);
-              });
-              </script>
-            </div>
-            <% end %>
+        <!--        elem.innerHTML = "";-->
+        <!--        let opt = {-->
+        <!--          starOn: "<#%= asset_path('star-on.png') %>",-->
+        <!--          starOff: "<#%= asset_path('star-off.png') %>",-->
+        <!--          starHalf: "<#%= asset_path('star-half.png') %>",-->
+        <!--          score: "<#%= book.star %>",-->
+        <!--          readOnly: true,-->
+        <!--        };-->
+        <!--        raty(elem, opt);-->
+        <!--      });-->
+        <!--      </script>-->
+        <!--    </div>-->
+        <!--    <#% end %>-->
             <div class="actions form-group justify-content:center; d-flex mt-5">
-            <%= f.submit "レビュー投稿",class: "btn btn-success col-3 mx-auto mb-3" %>
+            <%= f.submit "レビュー投稿",class: "btn btn-success " %>
             </div>
           <% end %>
         </div>

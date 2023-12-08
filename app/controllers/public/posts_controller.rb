@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
   end
 
   def new
-    @user = User.new
+    @post = Post.new
   end
 
   def show
@@ -12,11 +12,23 @@ class Public::PostsController < ApplicationController
   def edit
   end
   
+  def create
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+  
+    if @post.save
+      redirect_to posts_path(@post)
+    else
+      # 保存に失敗した場合の処理
+      render :new
+    end
+  end
+
   
 private
 
-  def post_params
-    params.require(:post).permit(:productname, :image, :comment, :categories_id, :skinconcernss_id, :star)
 
+  def post_params
+    params.permit(:productname, :image, :comment, :categories_id, :skinconcernss_id, :star)
   end
 end

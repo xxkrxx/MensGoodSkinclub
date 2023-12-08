@@ -36,8 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :profile_image_id
       t.text :profile
       t.integer :skin_concerns_id
-      t.string :is_active
-      t.string :boolean
+      t.boolean :is_active
       t.timestamps null: false
     end
 

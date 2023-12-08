@@ -24,7 +24,22 @@ footer {
 }
 
 // user 一覧
+.text-card-container {
+  padding-left: 9px;
+  padding-right: 9px;
+  margin-bottom: 50px;
+}
 
+.content-card {
+  height: 350px;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.round-img {
+  width: 350px;
+　height: 360px;
+}
 
 // マイページ
 .profile-wrap{
@@ -46,6 +61,7 @@ footer {
   border-color: #dbdbdb;
   font-size: 14px;
 }
+
 
 
 
