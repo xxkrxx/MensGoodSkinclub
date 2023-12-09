@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
  
-  
+  Skinitem.destroy_all
+  SkinConcern.destroy_all
+  Category.destroy_all
   
   ["ニキビ", "毛穴", "美白"].each do |name| 
      SkinConcern.create(name: name)
@@ -18,7 +20,7 @@
      Category.create(name: c_name)
   end
   
-    ["VT","イニスフリー"].each do |s_name| 
+    ["VT","MEDIHEAL","Dr.Jart+","BIOHEAL BOH","Torriden","魔女工場","Anua", "MISSHA","NATURE REPUBLIC"].each do |s_name| 
      Skinitem.create(name: s_name, skin_concern_id:  SkinConcern.find_by(name: "ニキビ").id, category_id: Category.find_by(name: "化粧水").id )
   end
   
