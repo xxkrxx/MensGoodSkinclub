@@ -12,30 +12,25 @@
             <th>ステータス</th>
           </tr>
         </thead>
-        <%# @user.each do |user| %>
+        <% @users.each do |user| %>
        <tr>
-         <td><%#= user.id %></td>
+         <td><%= user.id %></td>
          <td>
-           <%#= link_to admin_user_path(user.id),class: "text-decoration-none" do %>
-           <%#= user.name %>
-           <%# end %>
+           <%= link_to admin_user_path(user.id),class: "text-decoration-none" do %>
+           <%= user.name %>
+           <% end %>
          </td>
-         <td><%#= user.email %></td>
+         <td><%= user.email %></td>
          <td><!--会員ステータスに応じて条件分岐-->
-           <%# if user.is_active == true %>
+           <% if user.is_active == true %>
            <span style="color: #1a8066;">有効</span>
-           <%# else %>
+           <% else %>
            <span class="text-danger">退会</span>
-           <%# end %>
+           <% end %>
          </td>
        </tr>
-       <%# end %>
+       <% end %>
       </table>
-
-      <div class="row mx-auto justify-content-center">
-       <%#= paginate @uers,theme: 'page' %>
-      </div>
-    
     </div>
   </div>
 </div>

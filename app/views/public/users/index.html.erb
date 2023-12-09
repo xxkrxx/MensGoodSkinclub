@@ -5,10 +5,10 @@
        <div class="base-container mw-xl">
         <div class="texts-wrapper">
           <div class="contents-title text-center">
-            <div class="row justify-content-center">
+            <div class="justify-content-center">
               <div class="card-deck"><!--カード型デザインの横並びになっている要素の高さ調整を自動化-->
                 <% @users.each do |user| %>
-                  <div class="col-12 col-lg-5 text-card-container">
+                  <div class="text-card-container">
                     <div class="card content-card border-dark"><!--カードに黒枠を追加-->
                         <div class="card-header p-0">
                         <%= link_to user_path(user) do %>

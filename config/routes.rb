@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'skinconcern/index'
+  end
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
@@ -15,9 +18,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :skinitems
-    resources :users, only: [:index, :show, :edit, :upate]
-    resources :categories
-    resources :skinconcerns
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :categories, only: [:index, :create]
+    resources :skinconcerns, only: [:index, :create]
   end
 
   # 顧客用
