@@ -15,9 +15,8 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-  
     if @post.save
-      redirect_to posts_path(@post)
+      redirect_to posts_path
     else
       # 保存に失敗した場合の処理
       render :new
@@ -29,6 +28,6 @@ private
 
 
   def post_params
-    params.permit(:productname, :image, :comment, :categories_id, :skinconcernss_id, :star)
+   params.require(:post).permit(:productname, :image, :comment,  :skinitem_id, :skin_concern_id, :star) 
   end
 end

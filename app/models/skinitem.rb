@@ -1,5 +1,8 @@
 class Skinitem < ApplicationRecord
   has_many :posts
+  belongs_to :category
+  belongs_to :skin_concern
+  
   
   has_one_attached :image
   

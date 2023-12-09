@@ -2,7 +2,7 @@ class Admin::CategoriesController < ApplicationController
   
   def index
   @Category = Category.new #Categories新規登録用の箱 
-  @categories = Categories.all #Categories全件取得
+  @categories = Category.all #Categories全件取得
   end
   
 

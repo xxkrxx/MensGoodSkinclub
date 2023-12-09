@@ -13,6 +13,11 @@ $info: #061656;
 /* 背景色を指定 */
 body {
   background-color: #b8b9b6; 
+  // min-height: ;
+}
+
+main{
+  min-height: 720px;
 }
 
 footer {
@@ -31,7 +36,7 @@ footer {
 }
 
 .content-card {
-  height: 350px;
+  height: 390px;
   max-width: 360px;
   margin: 0 auto;
 }
@@ -64,4 +69,8 @@ footer {
 
 
 
-
+.card-img-top{
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}

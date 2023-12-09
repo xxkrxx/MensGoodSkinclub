@@ -53,15 +53,15 @@ ActiveRecord::Schema.define(version: 2023_12_03_095020) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "categoriesname"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "categories_id"
-    t.integer "skinconcernss_id"
+    t.integer "skin_concern_id"
+    t.integer "skinitem_id"
     t.string "productname"
     t.string "star"
     t.text "comment"
@@ -70,15 +70,15 @@ ActiveRecord::Schema.define(version: 2023_12_03_095020) do
   end
 
   create_table "skin_concerns", force: :cascade do |t|
-    t.string "skinconcernsname"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "skinitems", force: :cascade do |t|
-    t.integer "categories_id"
-    t.integer "skinconcernss_id"
-    t.string "productname"
+    t.integer "category_id"
+    t.integer "skin_concern_id"
+    t.string "name"
     t.text "introduction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
