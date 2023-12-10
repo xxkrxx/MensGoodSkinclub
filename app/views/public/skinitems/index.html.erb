@@ -8,7 +8,7 @@
         <li><a href="#whitening" style="color: black; text-decoration: none;"><strong>美白</strong></a></li>
       </ul>
 
-      <div class="base-container mw-xl">
+      <div id="all" class="base-container mw-xl">
         <div class="text-wrapper">
           <div class="contents-title text-center">
             <div class="justify-content-center">
@@ -41,7 +41,7 @@
                 <% end %>
               </div>
               <div class="row mx-auto justify-content-center">
-                <%= paginate @skinitems %>
+                <%= paginate @skinitems, params: { anchor: 'all' } %>
               </div>
 
               <section id="acne">
@@ -75,7 +75,7 @@
                   <% end %>
                 </div>
                 <div class="row mx-auto justify-content-center">
-                  <%= paginate @acne, :param_name => 'acne_page' %>
+                  <%= paginate @acne, :param_name => 'acne_page', params: { anchor: 'acne' } %>
                 </div>
               </section>
 
@@ -110,7 +110,7 @@
                   <% end %>
                 </div>
                 <div class="row mx-auto justify-content-center">
-                  <%= paginate @pore, :param_name => 'pore_page' %>
+                  <%= paginate @pore, :param_name => 'pore_page', params: { anchor: 'pore' } %>
                 </div>
               </section>
 
@@ -145,10 +145,10 @@
                   <% end %>
                 </div>
                 <div class="row mx-auto justify-content-center">
-                  <%= paginate @whitening, :param_name => 'whitening_page' %>
+                  <%= paginate @whitening, :param_name => 'whitening_page', params: { anchor: 'whitening' } %>　<!--params: { anchor: '〜〜〜' }アンカーリンクを使用する事でページネーションのある場所で実行した時にその状態のままページを変える事ができる-->
                 </div>
               </section>
-
+              
             </div>
           </div>
         </div>
