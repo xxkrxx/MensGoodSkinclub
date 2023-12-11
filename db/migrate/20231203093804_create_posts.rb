@@ -7,7 +7,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :productname
       t.string :star
       t.text :comment
-
+      t.string :image
       t.timestamps
     end
   end

@@ -13,25 +13,8 @@
             <th>カテゴリー</th>
           </tr>
         </thead>  
-          <!--テーブル本体-->
-          <tbody>
-            <% @skinitems.each do |skinitem| %>
-            <tr>
-              <td><%= skinitem.id admin_skinitem_path(skinitem.id) %></td>
-        
-              <td><%= link_to skinitem.productname admin_skinitem_path(skinitem.id), class: "text-decoration-none" %></td>
-              
-              <td><%= skinitem.skin_concern %></td>
-              
-              <td><%= skinitem.product_category %></td>
-              
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
+
         </table>
       </div>
    </div>
 </div>
-
-

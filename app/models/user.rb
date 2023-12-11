@@ -9,4 +9,9 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   
   attachment :profile_image
+  
+  # def active_for_authentication?
+  #   super && (is_deleted == false)
+  # end
+  
 end

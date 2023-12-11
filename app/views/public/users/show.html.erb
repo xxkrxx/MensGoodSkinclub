@@ -13,38 +13,55 @@
     <div class="justify-content-center">
       <div class="row">
         <div class="col-md-4 mt-4 ml-4">
-        <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", class: "round-img" %>  
+        <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", class: "round-img" %>
         </div>
         <div class="col-7">
           <table class="table d-inline">
             <tr>
-            <td class="h4">
+            <td class="h4" style="letter-spacing: 2px;">
               <strong><%= @user.name %></strong>
-            </td>  
+            </td>
               <% if @user.id == current_user.id %>
-              <td class="h4">
+              <td class="h4" style="letter-spacing: 2px;">
                 <%= @user.email %>
               </td>
               <td>
               <%= link_to "プロフィールを編集", edit_user_path, class: "btn btn-info" %>
               </td>
               <% end %>
-            </tr> 
+            </tr>
           </table>
-        </div>  
+        </div>
       </div>
     </div>
   </div>
-    <div class="row">
-      <div class="col-12">
-       <div class="text-center">
-        <p><%= @user.profile %></p><!--プロフィールコメント-->
-      </div>
-      <div class="text-ri">
-        <%= link_to "レビュー投稿する",new_post_path, class: "btn btn-success" %>
-      </div>
-      </div>  
+
+<div class="row">
+  <div class="col-12">
+    <div class="text-center">
+    <p><%= @user.profile %></p>
+    <%= link_to "レビュー投稿する", new_post_path, class: "btn btn-success" %>
     </div>
-</section>
+  </div>
+</div>
 
 
+
+<h2 class="mb-4">投稿した記事</h2>
+<div class="post-list">
+  <% @user.posts.each do |post| %>
+    <div class="post-card">
+      <%= link_to post_path(post) do %>
+        <%= image_tag post.get_image(200,200), style:"width:200" %>
+      <% end %>
+      <div class="post-card-content">
+        <p class="post-card-title"><%= post.productname %></p>
+        <%= link_to "詳細を見る", post_path(post), class: "post-card-link" %>
+        <% if @user.id == current_user.id %>
+          <%= link_to "編集", edit_post_path(post), class: "post-card-link" %>
+          <%= link_to "削除", post_path(post), method: :delete, data: { confirm: "削除しますか？" }, class: "post-card-link" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

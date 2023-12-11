@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'skinconcern/index'
-  end
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
@@ -30,7 +27,8 @@ Rails.application.routes.draw do
   resources :posts
   resources :users, only: [:index, :show, :edit, :update] do
     collection do
-    get :check
+    get 'check' => 'users#check'
+    patch 'withdraw' => 'users#withdraw'
     end
   end
   resources :skinitems, only: [:index, :show]

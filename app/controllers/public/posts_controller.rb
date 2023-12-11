@@ -13,11 +13,24 @@ class Public::PostsController < ApplicationController
   
     if @post.nil?
       flash[:alert] = "指定された投稿が見つかりません。"
-      redirect_to root_path # または適切なエラー処理を実装
+      redirect_to root_path 
     end
   end
 
   def edit
+    @post = Post.find(params[:id])
+    if @post.user != current_user
+        redirect_to posts_path, alert: "不正なアクセスです。"
+    end
+  end
+  
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to request.referer
+    else
+      render :new
+    end
   end
   
   def create
@@ -26,9 +39,14 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post)
     else
-      # 保存に失敗した場合の処理
       render :new
     end
+  end
+  
+   def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to user_path(post.user), notice: "レビューを削除しました。"
   end
 
   
