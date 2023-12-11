@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2023_12_03_095020) do
     t.string "profile_image_id"
     t.text "profile"
     t.integer "skin_concerns_id"
-    t.boolean "is_active", default: true
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
