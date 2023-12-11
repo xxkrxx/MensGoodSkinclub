@@ -24,7 +24,7 @@
      Skinitem.create(name: s_name, skin_concern_id:  SkinConcern.find_by(name: "ニキビ").id, category_id: Category.find_by(name: "化粧水").id )
   end
   
-  # Admin.create!(
-  #   email: "admin@admin.com",
-  #   password: "123456"
-  # )
+    Admin.create!(
+    email: "admin@admin.com",
+    password: "123456"
+    )

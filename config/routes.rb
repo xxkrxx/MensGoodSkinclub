@@ -28,7 +28,11 @@ Rails.application.routes.draw do
   root to:  'homes#top'
   get 'about' => 'homes#about'
   resources :posts
-  resources :users, only: [:index, :show, :edit, :check, :update]
+  resources :users, only: [:index, :show, :edit, :update] do
+    collection do
+    get :check
+    end
+  end
   resources :skinitems, only: [:index, :show]
   end
 

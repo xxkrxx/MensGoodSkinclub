@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row main-row">
+    <div class="col-12">
+      <h1 class="mt-4"><strong>商品レビュー 一覧ページ</strong></h1>
+      <div class="base-container mw-xl">
+        <div class="text-wrapper">
+          <div class="contents-title text-center">
+            <div class="justify-content-center">
+              <div class="card-deck">
+                <% @posts.each do |post| %>
+                  <div class="text-card-container">
+                    <div class="card content-card border-dark">
+                      <div class="card-header p-0">
+                        <%= link_to post_path(post) do %>
+                          <%= image_tag post.get_image(200,200), style:"width:200" %> 
+                        <% end %>
+                      </div>
+                      <div class="card-body d-flex align-items-center">
+                        <div>
+                          <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
+                            <%= link_to post.user.name, user_path(post.user) %>
+                          </p>
+                          <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
+                            <%= post.created_at.in_time_zone("Tokyo").strftime("%Y/%m/%d %H:%M:%S") %>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
