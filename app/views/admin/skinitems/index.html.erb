@@ -1,10 +1,11 @@
 <div class="container">
- <div class="row main-row">
-   <div class="col-12 mx-auto">
-    <h2 class="d-flex justify-content-between title mt-4">RecommendationProducts</h2>
-    <%= link_to "新規商品を投稿する",new_admin_skinitem_path, class: "btn btn-success float-right" %>
-    
-    <table class='table'>
+  <div class="row main-row">
+    <div class="col-12 mx-auto">
+      <h2 class="d-flex justify-content-between title mt-4">
+        <strong>Recommendation Products</strong>
+        <%= link_to "新規商品を投稿する", new_admin_skinitem_path, class: "btn btn-success float-right" %>
+      </h2>
+      <table class='table mt-5'>
         <thead class="table-dark">
           <tr>
             <th>商品ID</th>
@@ -13,15 +14,15 @@
             <th>商品カテゴリー</th>
           </tr>
         </thead>
-        <% @skinitems.each do |skinitem| %>
-        <tr>
-          <td><%= skinitem.id %></td>
-          <td><%= skinitem.name %></td>
-          <td><%= skinitem.skin_concern_id %></td>
-          <td><%= skinitem.category_id %></td>
-        </tr>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.id %></td>
+            <td><%= post.productname %></td>
+            <td><%= post.skinitem.skin_concern.name %></td>
+            <td><%= post.skinitem.category.name %></td>
+          </tr>
         <% end %>
-        </table>
-      </div>
-   </div>
+      </table>
+    </div>
+  </div>
 </div>

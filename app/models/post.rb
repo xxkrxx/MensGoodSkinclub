@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   belongs_to :skinitem
   belongs_to :skin_concern
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
   
   has_one_attached :image
@@ -14,6 +15,11 @@ class Post < ApplicationRecord
     end
 
     image.variant(resize_to_limit: [width, height]).processed
+  end
+  
+  def favorites?(user)
+    return false if self.nil? 
+    self.favorites.exists?(user_id: user.id)
   end
   
 end

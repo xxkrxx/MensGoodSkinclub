@@ -1,6 +1,6 @@
 class Admin::SkinitemsController < ApplicationController
   def index
-     @skinitems = Skinitem.all
+     @posts = Post.all
   end
 
   def new

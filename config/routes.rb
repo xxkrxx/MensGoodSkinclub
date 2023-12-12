@@ -30,7 +30,8 @@ Rails.application.routes.draw do
   root to:  'homes#top'
   get 'about' => 'homes#about'
   resources :posts do
-    resources :comments, only: [:create, :destroy]  
+    resources :comments, only: [:create, :destroy] 
+    resource :favorites, only: [:create, :destroy]
   end
   resources :users, only: [:index, :show, :edit, :update] do
     collection do
