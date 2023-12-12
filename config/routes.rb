@@ -29,7 +29,9 @@ Rails.application.routes.draw do
   scope module: :public do
   root to:  'homes#top'
   get 'about' => 'homes#about'
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:create, :destroy]  
+  end
   resources :users, only: [:index, :show, :edit, :update] do
     collection do
     get 'check' => 'users#check'
@@ -38,5 +40,4 @@ Rails.application.routes.draw do
   end
   resources :skinitems, only: [:index, :show]
   end
-
 end

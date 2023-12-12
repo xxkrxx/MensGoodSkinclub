@@ -3,7 +3,7 @@
     <div class="col-12">
       <h1 class="mt-4"><strong> レビュー詳細ページ</strong></h1>
       <div class="col-4">
-        <%= image_tag @post.get_image(200,200), style:"width:200" %> 
+        <%= image_tag @post.get_image(200,200), style:"width:200" %>
       </div>
       <div class="col-7 offset-1">
         <div class="form-group row">
@@ -36,25 +36,52 @@
           </div>
           <div class="col-8">
             <div id="star_<%= @post.id %>">
-            <script>
-            $(document).on('turbolinks:load', function() {
-            let elem = document.querySelector('#star_<%= @post.id %>');
-            if (elem == null) return;
-            
-            elem.innerHTML = "";
-            let opt = {  
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              starHalf: "<%= asset_path('star-half.png') %>",
-              score: "<%= @post.star %>",
-              readOnly: true,
-            };
-            raty(elem, opt);
-          });
-          </script>
-          </div>  
+                <script>
+                $(document).on('turbolinks:load', function() {
+                let elem = document.querySelector('#star_<%= @post.id %>');
+                if (elem == null) return;
+
+                elem.innerHTML = "";
+                let opt = {
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  starHalf: "<%= asset_path('star-half.png') %>",
+                  score: "<%= @post.star %>",
+                  readOnly: true,
+                };
+                raty(elem, opt);
+              });
+              </script>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <%= form_with model:[@post, @comment], local: false do |f| %>
+        <%= f.text_area :content, rows: '5', placeholder: "Any comments on this post?", class: "form-control mt-3" %>
+        <div class="text-right">
+          <%= f.submit "Submit", class: "btn btn-primary mt-3 mb-3" %>
+        </div>
+      <% end %>
+
+      <% @post.comments.each do |comment| %>
+        <div class="col-3 text-center">
+          <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", size: '40x40', class: "rounded-circle" %>
+          <div class="small mb-4">
+            <%= comment.user.name %>
+          </div>
+          <div class="small mb-4">
+            <%= comment.comment %>
+          </div>
+          <%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete, remote: true, "data-confirm" => t('comments.create.delete_confirm'), class: "btn-sm btn-danger" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

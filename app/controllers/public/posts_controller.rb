@@ -10,10 +10,11 @@ class Public::PostsController < ApplicationController
   
   def show
     @post = Post.find_by(id: params[:id])
-  
     if @post.nil?
       flash[:alert] = "指定された投稿が見つかりません。"
-      redirect_to root_path 
+      redirect_to root_path
+    else
+      @comment = Comment.new
     end
   end
 
@@ -43,7 +44,7 @@ class Public::PostsController < ApplicationController
     end
   end
   
-   def destroy
+  def destroy
     post = Post.find(params[:id])
     post.destroy
     redirect_to user_path(post.user), notice: "レビューを削除しました。"
