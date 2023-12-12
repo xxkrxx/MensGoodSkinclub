@@ -2,7 +2,7 @@
  <div class="row main-row">
    <div class="col-12 mx-auto">
     <h2 class="d-flex justify-content-between title mt-4">RecommendationProducts</h2>
-    <%= link_to "新規商品を投稿する",new_post_path, class: "btn btn-success float-right" %>
+    <%= link_to "新規商品を投稿する",new_admin_skinitem_path, class: "btn btn-success float-right" %>
     
     <table class='table'>
         <thead class="table-dark">
@@ -10,10 +10,17 @@
             <th>商品ID</th>
             <th>商品名</th>
             <th>肌悩み</th>
-            <th>カテゴリー</th>
+            <th>商品カテゴリー</th>
           </tr>
-        </thead>  
-
+        </thead>
+        <% @skinitems.each do |skinitem| %>
+        <tr>
+          <td><%= skinitem.id %></td>
+          <td><%= skinitem.name %></td>
+          <td><%= skinitem.skin_concern_id %></td>
+          <td><%= skinitem.category_id %></td>
+        </tr>
+        <% end %>
         </table>
       </div>
    </div>

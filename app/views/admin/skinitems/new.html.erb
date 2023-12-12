@@ -5,9 +5,9 @@
       <%= form_with model: @skinitem, url: posts_path do |f| %>
 
         <div class="form-row mt-5">
-          <span class="form-group col-3">プロフィール画像</span>
+          <span class="form-group col-3">商品画像</span>
           <div class="form-group col-3">
-            <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+            <%= f.file_field :image, class: "form-control-file user_image", accept: 'image/*' %>
           </div>
         </div>
 
@@ -27,12 +27,12 @@
         
         <div class="form-row mt-3">
           <span class="col-3">肌悩み　商品カテゴリー</span>
-          <%= f.select :skin_concern, [["ニキビ", "ニキビ"], ["毛穴", "毛穴"], ["美白", "美白"]], include_blank: "選択して下さい" %>
-          <%= f.select :product_category, [["洗顔", "洗顔"], ["化粧水", "化粧水"], ["美容液", "美容液"], ["クリーム", "クリーム"]], include_blank: "選択して下さい" %>
+          <%= f.collection_select :skin_concern_id, SkinConcern.all, :id, :name ,  include_blank: "選択して下さい" %>
+          <%= f.collection_select :skinitem_id, Skinitem.all, :id, :name ,  include_blank: "選択して下さい" %>
         </div>
 
         <div class="actions form-group justify-content-center d-flex mt-5">
-          <%= f.submit "レビュー投稿", class: "btn btn-success" %>
+          <%= f.submit "商品を投稿", class: "btn btn-success" %>
         </div>
 
       <% end %>

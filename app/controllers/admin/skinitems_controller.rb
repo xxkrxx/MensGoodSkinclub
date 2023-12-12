@@ -42,6 +42,6 @@ class Admin::SkinitemsController < ApplicationController
   private
 
   def skin_item_params
-    params.require(:skinitem).permit(:productname, :image, :introduction, :categories_id, :skinconcernss_id)
+    params.require(:skinitem).permit(:name, :image, :introduction, :category_id, :skin_concern_id)
   end
 end

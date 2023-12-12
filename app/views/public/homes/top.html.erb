@@ -1,0 +1,29 @@
+<div class="container-fluid py-5">
+  <div class="row">
+    <!--トップページの画像-->
+    <div class="col-md-8 mx-auto text-center">
+    <%= image_tag 'good-skin-club-SvWhF_P8lho-unsplash 2.jpg', size: '1000x500', class: "top" %>
+    </div>  
+    <p class="top-content">
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11">
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in" %>
+        </div>
+        <div class="row">
+          <%= link_to '新規登録画面', new_user_registration_path, class: 'btn btn-warning text-white btn-sm mb-3 btn-block' %>
+        </div>
+        <div class="row">
+          <%= link_to 'ログイン画面', new_user_session_path, class: 'btn btn-warning text-white btn-sm btn-block' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
