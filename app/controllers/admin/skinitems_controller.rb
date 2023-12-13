@@ -10,7 +10,7 @@ class Admin::SkinitemsController < ApplicationController
 
   def create
     @skinitem = Skinitem.new(skin_item_params)
-    @skinitem.user_id = current_user.id 
+    @skinitem.user_id = current_admin.id 
     if @skinitem.save
       flash[:notice] = "商品が登録できました"
       redirect_to admin_skinitems_path(@skinitem)

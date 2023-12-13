@@ -53,22 +53,17 @@
               });
               </script>
             </div>
-          </div>
-          
-          <div class="row">
-            <% if @post.favorites?(current_user) %>
-              <p>
-                <%= link_to post_favorites_path(@post.id), method: :delete do %>
-                <i class="fas fa-heart unlike-btn" ></i><%= @post.favorites.count %>
-                <% end %>
-              </p>
-            <% else %>
-              <p>
-                <%= link_to post_favorites_path(@post.id), method: :post do %>
-                  <i class="far fa-heart like-btn"></i><%= @post.favorites.count %> 
-                <% end %>
-              </p>
-            <% end %>
+            <div class="text-right">
+              <%= form_with model:[@post, @comment], local: false do |f| %>
+                <%= f.text_area :comment, rows: '5', placeholder: "Any comments on this post?", class: "form-control mt-3", id: "comment_textarea" %>
+                <div class="text-right">
+                  <%= f.submit "Submit", class: "btn btn-primary mt-3 mb-3" %>
+                </div>
+              <% end %>
+              <div id="favorite_btn_<%= @post.id %>" >
+                <%= render 'public/favorites/btn', post: @post %>  
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -79,27 +74,9 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <%= form_with model:[@post, @comment], local: false do |f| %>
-        <%= f.text_area :comment, rows: '5', placeholder: "Any comments on this post?", class: "form-control mt-3" %>
-        <div class="text-right">
-          <%= f.submit "Submit", class: "btn btn-primary mt-3 mb-3" %>
-        </div>
-      <% end %>
-
-      <% @post.comments.each do |comment| %>
-        <div class="col-3 text-center mb-4" style="display: flex;">
-          <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", size: '40x40', class: "rounded-circle" %>
-          <div class="small  ml-4">
-            <%= comment.user.name %>
-          </div>
-          <div class="small ml-4">
-            <%= comment.comment %>
-          </div>
-          <%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete, remote: true, "data-confirm" => t('comments.create.delete_confirm'), class: "btn-sm btn-danger ml-4" %>
-        </div>
-      <% end %>
+      <div id="comment_show">
+        <%= render 'public/comments/comment', post: @post, comments: @comments %>
+      </div>
     </div>
   </div>
 </div>
-
-

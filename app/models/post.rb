@@ -17,8 +17,9 @@ class Post < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
   
+  
   def favorites?(user)
-    return false if self.nil? 
+    return false if user.nil? || self.nil? 
     self.favorites.exists?(user_id: user.id)
   end
   

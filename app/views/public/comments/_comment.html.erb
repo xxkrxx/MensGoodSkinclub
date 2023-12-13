@@ -1,0 +1,13 @@
+<% comments.each do |comment| %>
+  <div class="col-3 text-center mb-4" style="display: flex;">
+    <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", size: '40x40', class: "rounded-circle" %>
+    <div class="small  ml-4">
+      <%= comment.user.name %>
+    </div>
+    <div class="small ml-4">
+      <%= comment.comment %>
+    </div>
+    <%= link_to "Delete", post_comment_path(post,comment), method: :delete, remote: true, "data-confirm" => t('comments.create.delete_confirm'), class: "btn-sm btn-danger ml-4" %>
+  </div>
+<% end %>
+

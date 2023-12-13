@@ -16,6 +16,7 @@ class Public::PostsController < ApplicationController
     else
       @comment = Comment.new
     end
+      @comments = @post.comments
   end
 
   def edit
