@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'posts/index'
-    get 'posts/new'
-    get 'posts/show'
-    get 'posts/edit'
-  end
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
@@ -16,7 +10,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   #ゲストログイン
   devise_scope :user do
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
@@ -26,6 +20,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :skinitems
+    resources :posts
     resources :users, only: [:index, :show, :edit, :update]
     resources :categories, only: [:index, :create]
     resources :skinconcerns, only: [:index, :create]
@@ -36,7 +31,7 @@ Rails.application.routes.draw do
   root to:  'homes#top'
   get 'about' => 'homes#about'
   resources :posts do
-    resources :comments, only: [:create, :destroy] 
+    resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
   resources :users, only: [:index, :show, :edit, :update] do

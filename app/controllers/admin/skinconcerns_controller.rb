@@ -1,4 +1,5 @@
-class Admin::SkinconcernsController < ApplicationController  
+class Admin::SkinconcernsController < ApplicationController 
+  before_action :authenticate_admin!
   
   def index
   @skin_concern = Skinconcern.new #skin_concern新規登録用の箱 

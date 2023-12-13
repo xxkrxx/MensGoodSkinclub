@@ -16,17 +16,18 @@
         <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", class: "round-img" %>
         </div>
         <div class="col-7">
-          <table class="table d-inline">
+          <table>
             <tr>
-            <td class="h4" style="letter-spacing: 2px;">
+            <td class="h4 mr-4">
               <strong><%= @user.name %></strong>
             </td>
+            <td></td>
               <% if @user.id == current_user.id %>
-              <td class="h4" style="letter-spacing: 2px;">
+              <td class="h4 ml-4">
                 <%= @user.email %>
               </td>
               <td>
-              <%= link_to "プロフィールを編集", edit_user_path, class: "btn btn-info" %>
+              <%= link_to "プロフィールを編集", edit_user_path, class: "btn btn-info ml-4" %>
               </td>
               <% end %>
             </tr>
@@ -40,19 +41,19 @@
   <div class="col-12">
     <div class="text-center">
     <p><%= @user.profile %></p>
-    <%= link_to "レビュー投稿する", new_post_path, class: "btn btn-success" %>
+    <%= link_to "レビュー投稿する", new_post_path, class: "btn btn-success float-right mr-3" %>
     </div>
   </div>
 </div>
 
 
 
-<h2 class="mb-4">投稿した記事</h2>
+<h2 class="mb-4 ml-5"><strong>投稿した記事</strong></h2>
 <div class="post-list">
   <% @user.posts.each do |post| %>
     <div class="post-card">
       <%= link_to post_path(post) do %>
-        <%= image_tag post.get_image(200,200), style:"width:200" %>
+        <%= image_tag post.get_image(200,200), style: "height:150px; width:200px;" %>
       <% end %>
       <div class="post-card-content">
         <p class="post-card-title"><%= post.productname %></p>
