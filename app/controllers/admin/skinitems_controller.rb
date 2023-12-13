@@ -1,7 +1,7 @@
 class Admin::SkinitemsController < ApplicationController
   before_action :authenticate_admin!
   def index
-     @posts = Post.all
+     @skinite = Skinitem.all
   end
 
   def new
