@@ -35,7 +35,8 @@ class Admin::SkinitemsController < ApplicationController
   end
 
   def edit
-    @Skinitem = Skinitem.find(params[:id])
+    @skinitem = Skinitem.find(params[:id])
+    @categoris = Category.all
   end
   
   

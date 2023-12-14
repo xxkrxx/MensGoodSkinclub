@@ -12,6 +12,7 @@
             <th>商品名</th>
             <th>肌悩み</th>
             <th>商品カテゴリー</th>
+            <th>カテゴリー</th>
           </tr>
         </thead>
         <% @skinitems.each do |skinitem| %>
@@ -19,6 +20,7 @@
             <td><%= link_to skinitem.id, admin_skinitem_path(skinitem) %></td>
             <td><%= skinitem.product_name %></td>
             <td><%= skinitem.skin_concern.name %></td>
+            <td><%= skinitem.name %></td>
             <td><%= skinitem.category.name %></td>
           </tr>
         <% end %>

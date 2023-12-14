@@ -7,7 +7,7 @@
           <%= image_tag @skinitem.get_image(300, 300), style: "width:200px" %>
         </div>
         <div class="col-7 offset-1">
-          <div class="form-group row">
+          <div class="row">
           <div class="col-4">
             <p class="font-weight-bold">商品名</p>
           </div>
@@ -15,7 +15,7 @@
             <%= @skinitem.product_name %>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="row">
           <div class="col-4">
             <p class="font-weight-bold">商品説明</p>
           </div>
@@ -23,12 +23,20 @@
             <%= @skinitem.introduction %>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="row">
           <div class="col-4">
-            <p class="font-weight-bold">肌悩み　商品カテゴリー</p>
+            <p class="font-weight-bold">肌悩み</p>
           </div>
           <div class="col-8">
-            <%= @skinitem.skin_concern.name %> <%= @skinitem.category.name %>
+            <%= @skinitem.skin_concern.name %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <p class="font-weight-bold">カテゴリー</p>
+          </div>
+          <div class="col-8">
+            <%= @skinitem.category.name %>
           </div>
         </div>
         <%= link_to "編集する", edit_admin_skinitem_path(@skinitem), class: "btn btn-success mt-3" %>
