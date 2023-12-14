@@ -59,8 +59,8 @@
         <p class="post-card-title"><%= post.productname %></p>
         <%= link_to "詳細を見る", post_path(post), class: "post-card-link" %>
         <% if @user.id == current_user.id %>
-          <%= link_to "編集", edit_post_path(post), class: "post-card-link" %>
-          <%= link_to "削除", post_path(post), method: :delete, data: { confirm: "削除しますか？" }, class: "post-card-link" %>
+          <%= link_to "編集", edit_post_path(post), class: "btn btn-info" %>
+          <%= link_to "削除", post_path(post), method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-danger" %>
         <% end %>
       </div>
     </div>

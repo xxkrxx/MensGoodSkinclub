@@ -6,28 +6,28 @@ class Admin::SkinitemsController < ApplicationController
 
   def new
     @skinitem = Skinitem.new
-    @categoris = Category.all
   end
   
-
   def create
     @skinitem = Skinitem.new(skin_item_params)
     if @skinitem.save
       redirect_to admin_skinitems_path(@skinitem)
     else
-      @Skinitems = Skinitem.all
+      @skinitems = Skinitem.all
       render 'new'
     end
   end
   
+
   def update
     @skinitem = Skinitem.find(params[:id])
-    if @skinitem.update(skinitem_params)
+    if @skinitem.update(skin_item_params)
       redirect_to admin_skinitem_path(@skinitem)
     else
       render :edit
     end
-  end  
+  end
+
 
 
   def show
@@ -36,7 +36,12 @@ class Admin::SkinitemsController < ApplicationController
 
   def edit
     @skinitem = Skinitem.find(params[:id])
-    @categoris = Category.all
+  end
+  
+  def destroy
+    @skinitem = Skinitem.find(params[:id])
+    @skinitem.destroy
+    redirect_to admin_skinitems_path
   end
   
   
