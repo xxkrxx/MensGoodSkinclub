@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row main-row">
+    <div class="col-12 mx-auto">
+      <h2 class="d-flex justify-content-between title mt-4">
+        <strong>Recommendation Products</strong>
+        <%= link_to "新規商品を投稿する", new_admin_skinitem_path, class: "btn btn-success float-right" %>
+      </h2>
+      <table class='table mt-5'>
+        <thead class="table-dark">
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>肌悩み</th>
+            <th>商品カテゴリー</th>
+          </tr>
+        </thead>
+        <% @skinitems.each do |skinitem| %>
+          <tr>
+            <td><%= link_to skinitem.id, admin_skinitem_path(skinitem) %></td>
+            <td><%= skinitem.product_name %></td>
+            <td><%= skinitem.skin_concern.name %></td>
+            <td><%= skinitem.category.name %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,19 +1,18 @@
 class Admin::SkinitemsController < ApplicationController
   before_action :authenticate_admin!
   def index
-     @skinite = Skinitem.all
+     @skinitems = Skinitem.all
   end
 
   def new
     @skinitem = Skinitem.new
+    @categoris = Category.all
   end
   
 
   def create
     @skinitem = Skinitem.new(skin_item_params)
-    @skinitem.user_id = current_admin.id 
     if @skinitem.save
-      flash[:notice] = "商品が登録できました"
       redirect_to admin_skinitems_path(@skinitem)
     else
       @Skinitems = Skinitem.all
@@ -43,6 +42,6 @@ class Admin::SkinitemsController < ApplicationController
   private
 
   def skin_item_params
-    params.require(:skinitem).permit(:name, :image, :introduction, :category_id, :skin_concern_id)
+    params.require(:skinitem).permit(:name, :image, :product_name, :introduction, :category_id, :skin_concern_id)
   end
 end

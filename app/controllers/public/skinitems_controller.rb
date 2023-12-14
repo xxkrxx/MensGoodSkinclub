@@ -3,10 +3,10 @@ class Public::SkinitemsController < ApplicationController
   
   def index
     @skinitems = Skinitem.all
-    @posts = Post.all
   end
 
   def show
     @skinitem = Skinitem.find(params[:id])
   end
+  
 end

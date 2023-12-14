@@ -5,7 +5,7 @@
         <%= form_with model: @post, url: posts_path, method: :post do |f| %>
 
             <div class="form-row mt-5">
-              <span class="form-group col-3">プロフィール画像</span>
+              <span class="form-group col-3">商品画像</span>
               <div class="form-group col-3">
                 <%= f.file_field :image, class: "form-control-file user_image", accept: 'image/jpeg,image/png' %>
               </div>

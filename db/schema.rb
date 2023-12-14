@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2023_12_12_063332) do
     t.integer "category_id"
     t.integer "skin_concern_id"
     t.string "name"
+    t.string "product_name"
     t.text "introduction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
