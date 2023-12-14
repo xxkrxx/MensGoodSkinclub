@@ -6,6 +6,7 @@ class Admin::SkinitemsController < ApplicationController
 
   def new
     @skinitem = Skinitem.new
+    @categories = Category.all
   end
   
   def create
@@ -36,6 +37,7 @@ class Admin::SkinitemsController < ApplicationController
 
   def edit
     @skinitem = Skinitem.find(params[:id])
+    @categories = Category.all
   end
   
   def destroy
