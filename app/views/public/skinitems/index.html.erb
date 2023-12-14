@@ -1,13 +1,40 @@
 <div class="container">
   <div class="row main-row">
     <div class="col-12">
-      <h1 class="mt-4"><strong>商品 一覧ページ</strong></h1>
+      <h1 class="mt-4"><strong>オススメ商品 一覧ページ</strong></h1>
       <div class="base-container mw-xl">
         <div class="text-wrapper">
           <div class="contents-title text-center">
             <div class="justify-content-center">
               <div class="card-deck">
                 <% @skinitems.each do |skinitem| %>
+                  <div class="text-card-container">
+                    <div class="card content-card border-dark">
+                      <div class="card-header p-0">
+                        <%= link_to skinitem_path(skinitem) do %>
+                        <%= image_tag skinitem.get_image(200,200), style: "height:150px; width:200px;" %>
+                        <% end %>
+                      </div>
+                      <div class="card-body d-flex align-items-center">
+                        <div>
+                           <p class="card-title text-left">
+                             <%= truncate(skinitem.product_name,length: 10, omission: '...') %>
+                          </p>
+                          <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
+                            <%= link_to "詳細を見る", skinitem_path(skinitem) %>
+                          </p>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+              
+              
+              <h1>ニキビ</h1>
+              <div class="card-deck">
+                <% @acne.each do |skinitem| %>
                   <div class="text-card-container">
                     <div class="card content-card border-dark">
                       <div class="card-header p-0">
@@ -37,6 +64,3 @@
   </div>
 </div>
 
-                          <!--<div id="favorite_btn_<%#= post.id %>" style="float: right;" >-->
-                          <!--  <%#= render 'public/favorites/btn', post: post %>-->
-                          <!--</div>-->

@@ -26,31 +26,36 @@
                           <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
                             <%= link_to "詳細を見る", post_path(post) %>
                           </p>
-                          <div id="favorite_btn_<%= post.id %>" style="float: right;" >
-                            <%= render 'public/favorites/btn', post: post %>
-                          </div>
-                           <div id="star_<%= post.id %>" style="float: left;">
-                              <script>
+
+                          <div id="star_<%= post.id %>" style="">
+                            <script>
                               $(document).on('turbolinks:load', function() {
-                              let elem = document.querySelector('#star_<%= post.id %>');
-                              if (elem == null) return;
-                      
-                              elem.innerHTML = "";
-                              let opt = {
-                                starOn: "<%= asset_path('star-on.png') %>",
-                                starOff: "<%= asset_path('star-off.png') %>",
-                                starHalf: "<%= asset_path('star-half.png') %>",
-                                score: "<%= post.star %>",
-                                readOnly: true,
-                              };
-                              raty(elem, opt);
-                            });
+                                let elem = document.querySelector('#star_<%= post.id %>');
+                                if (elem == null) return;
+                        
+                                elem.innerHTML = "";
+                                let opt = {
+                                  starOn: "<%= asset_path('star-on.png') %>",
+                                  starOff: "<%= asset_path('star-off.png') %>",
+                                  starHalf: "<%= asset_path('star-half.png') %>",
+                                  score: "<%= post.star %>",
+                                  readOnly: true,
+                                };
+                                raty(elem, opt);
+                              });
                             </script>
                           </div>
-                          <p class="text-center" style="font-weight: bold;">
-                            コメント数： <%= post.comments.count %>
-                          </p>
-                           <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
+                          
+                          <div class="d-flex justify-content-between">
+                            <p class="text-center" style="font-weight: bold;">
+                              コメント数： <%= post.comments.count %>
+                            </p>
+                            <div id="favorite_btn_<%= post.id %>" style="" >
+                              <%= render 'public/favorites/btn', post: post %>
+                            </div>
+                          </div>
+                          
+                          <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
                             <%= post.created_at.in_time_zone("Tokyo").strftime("%Y/%m/%d %H:%M:%S") %>
                           </p>
                         </div>

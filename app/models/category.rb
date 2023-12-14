@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  has_many :skinitems, dependent: :destroy
+  has_many :skinitems
 end
