@@ -21,7 +21,7 @@
   end
 
     ["VT","MEDIHEAL","Dr.Jart+","BIOHEAL BOH","Torriden","魔女工場","Anua", "COSRX","NATURE REPUBLIC", "その他"].each do |s_name|
-     Skinitem.create(name: s_name, skin_concern_id:  SkinConcern.find_by(name: "ニキビ").id, category_id: Category.find_by(name: "化粧水").id )
+     SkinitemCategory.create(name: s_name)
   end
 
   Admin.create!(

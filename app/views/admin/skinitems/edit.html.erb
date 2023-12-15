@@ -32,8 +32,8 @@
              </div>
               
             <div class="form-row mt-3">
-              <span class="col-3">商品カテゴリー</span> 
-              <%= f.collection_select :name, Skinitem.all, :name, :name ,  include_blank: "選択して下さい" %>
+              <span class="col-3">商品カテゴリー</span>
+              <%= f.collection_select :skinitem_category_id, @skinitem_categories, :id, :name,  include_blank: "選択して下さい" %>
             </div>
             
             <div class="form-row mt-3">

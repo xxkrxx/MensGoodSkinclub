@@ -40,7 +40,7 @@
             <p class="font-weight-bold">商品カテゴリー</p>
           </div>
           <div class="col-8">
-            <%= @skinitem.name %>
+          <%= @skinitem.skinitem_category.name if @skinitem.skinitem_category %>
           </div>
         </div>
 

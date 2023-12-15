@@ -19,9 +19,9 @@
           <tr>
             <td><%= link_to skinitem.id, admin_skinitem_path(skinitem) %></td>
             <td><%= skinitem.product_name %></td>
-            <td><%= skinitem.skin_concern.name %></td>
-            <td><%= skinitem.name %></td>
-            <td><%= skinitem.category.name %></td>
+            <td><%= skinitem.skin_concern.name if skinitem.skin_concern %></td>
+            <td><%= skinitem.skinitem_category.name if skinitem.skinitem_category %></td>
+            <td><%= skinitem.category.name if skinitem.category %></td>
           </tr>
         <% end %>
       </table>

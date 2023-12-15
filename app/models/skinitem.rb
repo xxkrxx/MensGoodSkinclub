@@ -2,10 +2,11 @@ class Skinitem < ApplicationRecord
   has_many :posts
   belongs_to :category
   belongs_to :skin_concern
+  belongs_to :skinitem_category
 
-  
+
     has_one_attached :image
-  
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
