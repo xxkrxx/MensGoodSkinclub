@@ -5,6 +5,7 @@ class Skinitem < ApplicationRecord
   belongs_to :skinitem_category
 
 
+
     has_one_attached :image
 
   def get_image(width, height)

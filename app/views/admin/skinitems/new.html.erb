@@ -3,7 +3,7 @@
     <div class="col-12">
       <h1 class="mt-4"><strong>新規商品投稿画面</strong></h1>
       <%= form_with model: @skinitem, url: admin_skinitems_path do |f| %>
-
+  
         <div class="form-row mt-5">
           <span class="form-group col-3">商品画像</span>
           <div class="form-group col-3">
@@ -27,17 +27,17 @@
 
         <div class="form-row mt-3">
           <span class="col-3">肌悩み</span>
-          <%= f.collection_select :skin_concern_id, SkinConcern.all, :id, :name ,  include_blank: "選択して下さい" %>
+          <%= f.collection_select :skin_concern_id, SkinConcern.all, :id, :name, include_blank: "選択して下さい" %>
         </div>
 
         <div class="form-row mt-3">
           <span class="col-3">商品カテゴリー</span>
-          <%= f.collection_select :skinitem_category_id, @skinitem_categories, :id, :name,  include_blank: "選択して下さい" %>
+          <%= f.collection_select :skinitem_category_id, SkinitemCategory.all, :id, :name, include_blank: "選択して下さい" %>
         </div>
 
          <div class="form-row mt-3">
           <span class="col-3">カテゴリー</span>
-          <%= f.collection_select :category_id, @categories, :id, :name ,  include_blank: "選択して下さい" %>
+          <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択して下さい" %>
         </div>
 
         <div class="actions form-group justify-content-center d-flex mt-5">

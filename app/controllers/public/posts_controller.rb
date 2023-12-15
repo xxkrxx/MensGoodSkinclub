@@ -6,7 +6,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @options = ["Option 1", "Option 2", "Option 3"]
+    @categories = Category.all
   end
   
   def show
@@ -25,6 +25,8 @@ class Public::PostsController < ApplicationController
     if @post.user != current_user
         redirect_to posts_path, alert: "不正なアクセスです。"
     end
+    @categories = Category.all
+    @skinitem_categories = SkinitemCategory.all
   end
   
   def update

@@ -7,8 +7,9 @@ class Admin::SkinitemsController < ApplicationController
   def new
     @skinitem = Skinitem.new
     @categories = Category.all
-    @skinitem_categories = SkinitemCategories.all
+    @skinitem_categories = SkinitemCategory.all
   end
+
   
   def create
     @skinitem = Skinitem.new(skin_item_params)
@@ -16,7 +17,7 @@ class Admin::SkinitemsController < ApplicationController
       redirect_to admin_skinitems_path(@skinitem)
     else
       @skinitems = Skinitem.all
-      render 'new'
+      render :new
     end
   end
   
@@ -38,8 +39,6 @@ class Admin::SkinitemsController < ApplicationController
 
   def edit
     @skinitem = Skinitem.find(params[:id])
-    @categories = Category.all
-    @skinitem_categories = SkinitemCategories.all
   end
   
   def destroy
@@ -52,6 +51,7 @@ class Admin::SkinitemsController < ApplicationController
   private
 
   def skin_item_params
-    params.require(:skinitem).permit(:name, :image, :product_name, :introduction, :category_id, :skin_concern_id)
+    params.require(:skinitem).permit(:name, :image, :product_name, :introduction, :category_id, :skin_concern_id, :skinitem_category_id)
   end
+
 end

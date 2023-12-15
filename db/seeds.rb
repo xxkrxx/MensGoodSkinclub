@@ -10,19 +10,29 @@
   Skinitem.destroy_all
   SkinConcern.destroy_all
   Category.destroy_all
+  
+  skinconcerns = %w(
+  ニキビ 毛穴 美白
+  )
+  skinconcerns.each do |skinconcern|
+    SkinConcern.create!(name: skinconcern)
+  end
 
-  ["ニキビ", "毛穴", "美白"].each do |name|
-     SkinConcern.create(name: name)
+  categories = %w(
+  洗顔 化粧水 美容液 クリーム
+  )
+  categories.each do |category|
+    Category.create!(name: category)
+  end
+
+  skinitemcategories = %w(
+    VT MEDIHEAL Dr.Jart BIOHEALBOH Torriden 魔女工場 Anua COSRX NATUREREPUBLIC その他
+  )
+  skinitemcategories.each do |skinitemcategory|
+    SkinitemCategory.create!(name: skinitemcategory)
   end
 
 
-   ["洗顔", "化粧水", "美容液","クリーム"].each do |c_name|
-     Category.create(name: c_name)
-  end
-
-    ["VT","MEDIHEAL","Dr.Jart+","BIOHEAL BOH","Torriden","魔女工場","Anua", "COSRX","NATURE REPUBLIC", "その他"].each do |s_name|
-     SkinitemCategory.create(name: s_name)
-  end
 
   Admin.create!(
   email: "admin@admin.com",
@@ -36,3 +46,5 @@
     password: "111111"
     )
   end
+  
+
