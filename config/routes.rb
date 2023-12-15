@@ -41,5 +41,6 @@ Rails.application.routes.draw do
     end
   end
   resources :skinitems, only: [:index, :show]
+  get "search" => "searches#search"
   end
 end
