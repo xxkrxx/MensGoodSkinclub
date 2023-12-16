@@ -39,17 +39,48 @@ class Post < ApplicationRecord
           @category = Category.find_by("name LIKE?","#{word}")
           @category.posts
       end
+    end
       
-      # @post = Post.where("name LIKE?", "#{word}")
-    elsif search == "forward_match"
-      @post = Post.where("name LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @post = Post.where("name LIKE?","%#{word}")
-    elsif search == "partial_match"
-      @post = Post.where("name LIKE?","%#{word}%")
-    else
-      @post = Post.all
+      
+    if search == "forward_match"
+      if skin_type == "skin_concern"
+        @skin_concern = SkinConcern.find_by("name LIKE?","#{word}%")
+        @skin_concern.posts
+      elsif skin_type == "skinitem_category"
+        @skinitem_category = SkinitemCategory.find_by("name LIKE?","#{word}%")
+        @skinitem_category.posts
+      else
+        @category = Category.find_by("name LIKE?","#{word}%")
+        @category.posts
+      end 
+    end
+      
+      
+    if search == "backward_match"
+      if skin_type == "skin_concern"
+        @skin_concern = SkinConcern.find_by("name LIKE?","%#{word}")
+        @skin_concern.posts
+      elsif skin_type == "skinitem_category"
+        @skinitem_category = SkinitemCategory.find_by("name LIKE?","%#{word}")
+        @skinitem_category.posts
+      else
+        @category = Category.find_by("name LIKE?","%#{word}")
+        @category.posts
+      end
+    end  
+      
+    if search == "partial_match"
+      if skin_type == "skin_concern"
+        @skin_concern = SkinConcern.find_by("name LIKE?","%#{word}%")
+        @skin_concern.posts
+      elsif skin_type == "skinitem_category"
+        @skinitem_category = SkinitemCategory.find_by("name LIKE?","%#{word}%")
+        @skinitem_category.posts
+      else
+        @category = Category.find_by("name LIKE?","%#{word}%")
+        @category.posts
+        @post = Post.all
+      end
     end
   end
-
 end

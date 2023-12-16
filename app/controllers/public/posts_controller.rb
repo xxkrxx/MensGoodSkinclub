@@ -1,7 +1,19 @@
 class Public::PostsController < ApplicationController
-
+  
   def index
     @posts = Post.all
+    @categories = Category.all
+    @skin_concerns = SkinConcern.all
+
+    if params[:category_id].present?
+      @category = Category.find(params[:category_id])
+      @posts = @category.posts
+    end
+
+    if params[:skin_concern_id].present?
+      @skin_concern = SkinConcern.find(params[:skin_concern_id])
+      @posts = @skin_concern.posts
+    end
   end
 
   def new

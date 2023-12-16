@@ -3,13 +3,12 @@
   <%= form_with url: search_path, local: true, method: :get do |f| %>
       <%= f.text_field :word %>
       <%= f.select :range, options_for_select([['User'], ['Post']]) %>
+                                                  <!--左が検索する表示名　右コントローラーに送る値-->
       <%= f.select :skin_type, options_for_select([['肌悩み', 'skin_concern'], ['商品カテゴリー', 'skinitem_category'],['カテゴリー', 'category']]) %>
       <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
       <%= f.submit "検索", class: "btn-sm btn-primary" %>
     <% end %>
   </div>
 <% end %>
-      <!--@category-->
-      <!--@skinitem_category-->
       
-      <!--左が検索する表示名　右コントローラーに送る値-->
+ 

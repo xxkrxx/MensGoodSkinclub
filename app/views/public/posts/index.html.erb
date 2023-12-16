@@ -32,7 +32,7 @@
                               $(document).on('turbolinks:load', function() {
                                 let elem = document.querySelector('#star_<%= post.id %>');
                                 if (elem == null) return;
-                        
+
                                 elem.innerHTML = "";
                                 let opt = {
                                   starOn: "<%= asset_path('star-on.png') %>",
@@ -45,7 +45,7 @@
                               });
                             </script>
                           </div>
-                          
+
                           <div class="d-flex justify-content-between">
                             <p class="text-center" style="font-weight: bold;">
                               コメント数： <%= post.comments.count %>
@@ -54,7 +54,7 @@
                               <%= render 'public/favorites/btn', post: post %>
                             </div>
                           </div>
-                          
+
                           <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
                             <%= post.created_at.in_time_zone("Tokyo").strftime("%Y/%m/%d %H:%M:%S") %>
                           </p>
@@ -71,3 +71,11 @@
     </div>
   </div>
 </div>
+
+      <div class="container">
+        <div class="row main-row">
+          <div class="col-2 mx-auto">
+            <%= render 'layouts/category', categories: @categories, skin_concerns: @skin_concerns %>
+          </div>
+        </div>
+      </div>
