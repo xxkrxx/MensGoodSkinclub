@@ -27,9 +27,20 @@ class Post < ApplicationRecord
   end
 
 
-  def self.looks(search, word)
+  def self.looks(search, word, skin_type)
     if search == "perfect_match"
-      @post = Post.where("name LIKE?", "#{word}")
+      if skin_type == "skin_concern"
+          @skin_concern = SkinConcern.find_by("name LIKE?","#{word}")
+          @skin_concern.posts
+      elsif skin_type == "skinitem_category"
+          @skinitem_category = SkinitemCategory.find_by("name LIKE?","#{word}")
+          @skinitem_category.posts
+      else
+          @category = Category.find_by("name LIKE?","#{word}")
+          @category.posts
+      end
+      
+      # @post = Post.where("name LIKE?", "#{word}")
     elsif search == "forward_match"
       @post = Post.where("name LIKE?","#{word}%")
     elsif search == "backward_match"

@@ -53,10 +53,10 @@
   <% @user.posts.each do |post| %>
     <div class="post-card">
       <%= link_to post_path(post) do %>
-        <%= image_tag post.get_image(200,200), style: "height:150px; width:200px;" %>
+        <%= image_tag post.get_image(250,250), style: "height:250px; width:250px;" %>
       <% end %>
-      <div class="post-card-content">
-        <p class="post-card-title"><%= post.productname %></p>
+       <div class="post-card-content" style="padding: 15px; background-color: #f8f9fa;">
+         <p class="post-card-title"><%= post.productname %></p>
         <%= link_to "詳細を見る", post_path(post), class: "post-card-link" %>
         <% if @user.id == current_user.id %>
           <%= link_to "編集", edit_post_path(post), class: "btn btn-info" %>

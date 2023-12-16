@@ -48,7 +48,7 @@ footer {
 　height: 360px;
 }
 
-// マイページ
+
 .profile-wrap{
   margin:40px 0px;
 }
@@ -78,7 +78,7 @@ footer {
   border-radius:50%;
 }
 
-
+// マイページ
 
 .post-list {
   display: flex;
@@ -94,6 +94,7 @@ footer {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 0 0 5px 5px;
+  width: 250px;
 }
 
 .post-card-title {
@@ -101,6 +102,8 @@ footer {
   font-weight: bold;
   margin-bottom: 5px;
 }
+
+
 
 .post-card-link {
   text-decoration: none;
