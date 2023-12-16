@@ -26,7 +26,7 @@
   end
 
   skinitem_categories = %w(
-    VT MEDIHEAL Dr.Jart BIOHEALBOH Torriden 魔女工場 Anua COSRX NATUREREPUBLIC その他
+    VT MEDIHEAL Dr.Jart BIOHEALBOH Torriden 魔女工場 Anua COSRX NATUREREPUBLIC Dr.G ONETHING KLAIRS CNP イニスフリー 日本の製品 その他
   )
   skinitem_categories.each do |skinitemcategory|
     SkinitemCategory.create!(name: skinitemcategory)
