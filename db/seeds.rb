@@ -7,12 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-  Skinitem.destroy_all
+  SkinitemCategory.destroy_all
   SkinConcern.destroy_all
   Category.destroy_all
   
   skinconcerns = %w(
-  ニキビ 毛穴 美白
+  ニキビ 毛穴 美白 
   )
   skinconcerns.each do |skinconcern|
     SkinConcern.create!(name: skinconcern)
@@ -25,10 +25,10 @@
     Category.create!(name: category)
   end
 
-  skinitemcategories = %w(
+  skinitem_categories = %w(
     VT MEDIHEAL Dr.Jart BIOHEALBOH Torriden 魔女工場 Anua COSRX NATUREREPUBLIC その他
   )
-  skinitemcategories.each do |skinitemcategory|
+  skinitem_categories.each do |skinitemcategory|
     SkinitemCategory.create!(name: skinitemcategory)
   end
 

@@ -13,7 +13,7 @@ class Admin::PostsController < ApplicationController
   
   
   def post_params
-    params.require(:post).permit(:productname, :image, :comment,  :skinitem_id, :skin_concern_id, :star)
+    params.require(:post).permit(:productname, :image, :comment,  :category_id, :skin_concern_id, :skinitem_category_id, :star)
   end
   
   

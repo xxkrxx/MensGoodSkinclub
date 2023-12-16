@@ -76,13 +76,14 @@ ActiveRecord::Schema.define(version: 2023_12_15_003649) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "skin_concern_id"
-    t.integer "skinitem_id"
-    t.string "productname"
-    t.string "star"
-    t.text "comment"
-    t.string "image"
+    t.integer "user_id", null: false
+    t.integer "skin_concern_id", null: false
+    t.integer "category_id", null: false
+    t.integer "skinitem_category_id"
+    t.string "productname", null: false
+    t.string "star", null: false
+    t.text "comment", null: false
+    t.string "image", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -102,6 +103,7 @@ ActiveRecord::Schema.define(version: 2023_12_15_003649) do
   create_table "skinitems", force: :cascade do |t|
     t.integer "category_id"
     t.integer "skin_concern_id"
+    t.integer "skinitem_category_id"
     t.string "name"
     t.string "product_name"
     t.text "introduction"

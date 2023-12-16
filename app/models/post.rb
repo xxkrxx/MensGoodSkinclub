@@ -2,8 +2,11 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :skinitem
   belongs_to :skin_concern
+  belongs_to :category
+  belongs_to :skinitem_category
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
   
   
   has_one_attached :image

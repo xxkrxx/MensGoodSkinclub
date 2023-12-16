@@ -43,7 +43,7 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save
       redirect_to post_path(@post)
-    else
+    else 
       render :new
     end
   end
@@ -59,6 +59,6 @@ private
 
 
   def post_params
-    params.require(:post).permit(:productname, :image, :comment,  :skinitem_id, :skin_concern_id, :star)
+    params.require(:post).permit(:productname, :image, :comment, :category_id, :skinitem_category_id, :skin_concern_id, :star)
   end
 end
