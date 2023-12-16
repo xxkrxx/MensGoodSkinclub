@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row main-row">
-    <div class="col-12">
+    <div class="col-2 mx-auto">
+      <%= render 'layouts/category', categories: @categories, skin_concerns: @skin_concerns %>
+    </div>
+    <div class="col-10">
       <h1 class="mt-4"><strong>商品レビュー 一覧ページ</strong></h1>
       <div class="base-container mw-xl">
         <div class="text-wrapper">
@@ -74,8 +77,6 @@
 
       <div class="container">
         <div class="row main-row">
-          <div class="col-2 mx-auto">
-            <%= render 'layouts/category', categories: @categories, skin_concerns: @skin_concerns %>
-          </div>
+          
         </div>
       </div>

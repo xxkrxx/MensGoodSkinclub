@@ -80,11 +80,6 @@ footer {
 
 // マイページ
 
-.post-list {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .post-card {
   width: 200px;
   margin: 10px;
@@ -94,7 +89,7 @@ footer {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 0 0 5px 5px;
-  width: 250px;
+  width: 100%;
 }
 
 .post-card-title {

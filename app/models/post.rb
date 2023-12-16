@@ -31,56 +31,57 @@ class Post < ApplicationRecord
     if search == "perfect_match"
       if skin_type == "skin_concern"
           @skin_concern = SkinConcern.find_by("name LIKE?","#{word}")
-          @skin_concern.posts
+          return @skin_concern.posts
       elsif skin_type == "skinitem_category"
           @skinitem_category = SkinitemCategory.find_by("name LIKE?","#{word}")
-          @skinitem_category.posts
+          return @skinitem_category.posts
       else
           @category = Category.find_by("name LIKE?","#{word}")
-          @category.posts
+          return @category.posts
       end
     end
-      
-      
+
     if search == "forward_match"
       if skin_type == "skin_concern"
         @skin_concern = SkinConcern.find_by("name LIKE?","#{word}%")
-        @skin_concern.posts
+        return @skin_concern.posts
       elsif skin_type == "skinitem_category"
         @skinitem_category = SkinitemCategory.find_by("name LIKE?","#{word}%")
-        @skinitem_category.posts
+        return @skinitem_category.posts
       else
         @category = Category.find_by("name LIKE?","#{word}%")
-        @category.posts
-      end 
+        return @category.posts
+      end
     end
-      
-      
+
+
     if search == "backward_match"
       if skin_type == "skin_concern"
         @skin_concern = SkinConcern.find_by("name LIKE?","%#{word}")
-        @skin_concern.posts
+        return @skin_concern.posts
       elsif skin_type == "skinitem_category"
         @skinitem_category = SkinitemCategory.find_by("name LIKE?","%#{word}")
-        @skinitem_category.posts
+        return @skinitem_category.posts
       else
         @category = Category.find_by("name LIKE?","%#{word}")
-        @category.posts
+        return @category.posts
       end
-    end  
-      
+    end
+
     if search == "partial_match"
       if skin_type == "skin_concern"
         @skin_concern = SkinConcern.find_by("name LIKE?","%#{word}%")
-        @skin_concern.posts
+        return @skin_concern.posts
       elsif skin_type == "skinitem_category"
         @skinitem_category = SkinitemCategory.find_by("name LIKE?","%#{word}%")
-        @skinitem_category.posts
+        return @skinitem_category.posts
       else
         @category = Category.find_by("name LIKE?","%#{word}%")
         @category.posts
-        @post = Post.all
+        return @posts = Post.all
       end
     end
   end
 end
+
+

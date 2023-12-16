@@ -8,7 +8,6 @@
 </div>
 
 
-<section class="section">
   <div class="container">
     <div class="justify-content-center">
       <div class="row">
@@ -47,22 +46,25 @@
 </div>
 
 
-
-<h2 class="mb-4 ml-5"><strong>投稿した記事</strong></h2>
-<div class="post-list">
-  <% @user.posts.each do |post| %>
-    <div class="post-card">
-      <%= link_to post_path(post) do %>
-        <%= image_tag post.get_image(250,250), style: "height:250px; width:250px;" %>
-      <% end %>
-       <div class="post-card-content" style="padding: 15px; background-color: #f8f9fa;">
-         <p class="post-card-title"><%= post.productname %></p>
-        <%= link_to "詳細を見る", post_path(post), class: "post-card-link" %>
-        <% if @user.id == current_user.id %>
-          <%= link_to "編集", edit_post_path(post), class: "btn btn-info" %>
-          <%= link_to "削除", post_path(post), method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-danger" %>
-        <% end %>
+<div class="container">
+  <h2 class="mb-4 ml-5"><strong>投稿した記事</strong></h2>
+  <div class="row">
+      <% @user.posts.each do |post| %>
+      <div class="col-md-3">
+        <div class="post-card">
+          <%= link_to post_path(post) do %>
+            <%= image_tag post.get_image(250,250), style: "height:250px; width:100%; object-fit: cover;" %>
+          <% end %>
+           <div class="post-card-content" style="background-color: #f8f9fa;">
+             <p class="post-card-title"><%= post.productname %></p>
+            <%= link_to "詳細を見る", post_path(post), class: "post-card-link" %>
+            <% if @user.id == current_user.id %>
+              <%= link_to "編集", edit_post_path(post), class: "btn btn-info" %>
+              <%= link_to "削除", post_path(post), method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-danger" %>
+            <% end %>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
