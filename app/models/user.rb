@@ -18,8 +18,19 @@ class User < ApplicationRecord
     end
   end  
   
+  def user_status
+    if is_deleted == true
+      "退会"
+    else
+      "有効"
+    end
+  end
+  
+    def active_for_authentication?
+      super && (is_deleted == false)
+    end
+  
   def self.looks(search, word)
-    byebug
     if search == "perfect_match"
       @user = User.where("name LIKE?", "#{word}")
     elsif search == "forward_match"

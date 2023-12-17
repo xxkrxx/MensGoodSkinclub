@@ -19,7 +19,6 @@ class Admin::UsersController < ApplicationController
       flash[:admin_customer] = "更新成功"
       redirect_to admin_users_path(@user)
     end
-    render :edit
   end
   
   private
