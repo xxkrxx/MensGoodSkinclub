@@ -4,7 +4,6 @@ class Public::UsersController < ApplicationController
   end
 
   def check
-    
   end
 
   def show

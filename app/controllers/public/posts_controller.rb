@@ -14,6 +14,16 @@ class Public::PostsController < ApplicationController
       @skin_concern = SkinConcern.find(params[:skin_concern_id])
       @posts = @skin_concern.posts
     end
+    
+    if params[:latest]
+     @posts = Post.latest
+    elsif params[:old]
+     @posts = Post.old
+    elsif params[:star_count]
+     @posts = Post.star_count
+    else
+     @posts = Post.all
+    end
   end
 
   def new

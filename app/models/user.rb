@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end  
   
   def user_status
-    if is_deleted == true
+    if is_active == false
       "退会"
     else
       "有効"
@@ -27,7 +27,7 @@ class User < ApplicationRecord
   end
   
     def active_for_authentication?
-      super && (is_deleted == false)
+      super && (is_active == true)
     end
   
   def self.looks(search, word)
