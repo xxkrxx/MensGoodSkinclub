@@ -64,8 +64,10 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
+      flash[:notice] = "投稿が成功しました。"
       redirect_to post_path(@post)
     else
+      flash[:alert] = "投稿に失敗しました。入力内容を確認してください。"
       puts @post.errors.full_messages
       render :new
     end

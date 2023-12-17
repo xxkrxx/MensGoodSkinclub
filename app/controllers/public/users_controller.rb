@@ -16,16 +16,24 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user)
+  if @user.update(user_params)
+     flash[:notice] = "ユーザー情報を更新しました。"
+     redirect_to user_path(@user)
+  else
+     flash[:alert] = "ユーザー情報の更新に失敗しました。入力内容を確認してください。"
+     render :edit
   end
   
   def withdraw
-  @user = User.find(current_user.id)
-  @user.update(is_active: false)
-  reset_session
-  flash[:notice] = "退会処理を実行いたしました"
-  redirect_to root_path
+    @user = User.find(current_user.id)
+    if @user.update(is_active: false)
+      reset_session
+      flash[:notice] = "退会処理を実行いたしました。"
+      redirect_to root_path
+    else
+      flash[:alert] = "退会処理に失敗しました。もう一度お試しください。"
+      redirect_to user_path(@user)
+    end
   end
 
 
