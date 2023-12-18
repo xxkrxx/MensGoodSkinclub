@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
 <div class="search-form-006" placeholder="キーワードを入力">
   <%= form_with url: search_path, local: true, method: :get do |f| %>
-      <%= f.select :range, options_for_select([['User'], ['Post']]) %>
-      <%= f.select :skin_type, options_for_select([['肌悩み', 'skin_concern'], ['商品カテゴリー', 'skinitem_category'],['カテゴリー', 'category']]) %>
+      <%= f.select :range, options_for_select([['ユーザー'], ['レビュー']]) %>
+      <%= f.select :skin_type, options_for_select([['肌悩み', 'skin_concern'], ['商品ブランド', 'skinitem_category'],['カテゴリー', 'category']]) %>
       <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
       <%= f.text_field :word,placeholder: "検索ワード" %>
       <%= f.submit "検索", class: "btn-sm btn-primary" %>
