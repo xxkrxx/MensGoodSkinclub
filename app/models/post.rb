@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   belongs_to :skinitem_category
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
  scope :latest, -> {order(created_at: :desc)}
  scope :old, -> {order(created_at: :asc)}
  scope :star_count, -> {order(star: :desc)}
@@ -34,61 +34,83 @@ class Post < ApplicationRecord
   end
 
 
+
   def self.looks(search, word, skin_type)
     if search == "perfect_match"
       if skin_type == "skin_concern"
-          @skin_concern = SkinConcern.find_by("name LIKE?","#{word}")
-          return @skin_concern.posts
+          skin_concern = SkinConcern.find_by("name LIKE?","#{word}")
+
+           return skin_concern.present? ? skin_concern.posts : []
+
       elsif skin_type == "skinitem_category"
-          @skinitem_category = SkinitemCategory.find_by("name LIKE?","#{word}")
-          return @skinitem_category.posts
+          skinitem_category = SkinitemCategory.find_by("name LIKE?","#{word}")
+          
+          return skinitem_category.present? ? skinitem_category.posts : []
+          
       else
-          @category = Category.find_by("name LIKE?","#{word}")
-          return @category.posts
+          category = Category.find_by("name LIKE?","#{word}")
+          
+          return category.present? ? category.posts : []
+          
       end
     end
 
     if search == "forward_match"
       if skin_type == "skin_concern"
-        @skin_concern = SkinConcern.find_by("name LIKE?","#{word}%")
-        return @skin_concern.posts
+          skin_concern = SkinConcern.find_by("name LIKE?","#{word}")
+    
+           return skin_concern.present? ? skin_concern.posts : []
+    
       elsif skin_type == "skinitem_category"
-        @skinitem_category = SkinitemCategory.find_by("name LIKE?","#{word}%")
-        return @skinitem_category.posts
+          skinitem_category = SkinitemCategory.find_by("name LIKE?","#{word}")
+          
+          return skinitem_category.present? ? skinitem_category.posts : []
+          
       else
-        @category = Category.find_by("name LIKE?","#{word}%")
-        return @category.posts
+          category = Category.find_by("name LIKE?","#{word}")
+          
+          return category.present? ? category.posts : []
+          
       end
     end
 
 
     if search == "backward_match"
       if skin_type == "skin_concern"
-        @skin_concern = SkinConcern.find_by("name LIKE?","%#{word}")
-        return @skin_concern.posts
+          skin_concern = SkinConcern.find_by("name LIKE?","#{word}")
+
+           return skin_concern.present? ? skin_concern.posts : []
+
       elsif skin_type == "skinitem_category"
-        @skinitem_category = SkinitemCategory.find_by("name LIKE?","%#{word}")
-        return @skinitem_category.posts
+          skinitem_category = SkinitemCategory.find_by("name LIKE?","#{word}")
+          
+          return skinitem_category.present? ? skinitem_category.posts : []
+          
       else
-        @category = Category.find_by("name LIKE?","%#{word}")
-        return @category.posts
+          category = Category.find_by("name LIKE?","#{word}")
+          
+          return category.present? ? category.posts : []
+          
       end
     end
 
     if search == "partial_match"
       if skin_type == "skin_concern"
-        @skin_concern = SkinConcern.find_by("name LIKE?","%#{word}%")
-        return @skin_concern.posts
+          skin_concern = SkinConcern.find_by("name LIKE?","#{word}")
+
+           return skin_concern.present? ? skin_concern.posts : []
+
       elsif skin_type == "skinitem_category"
-        @skinitem_category = SkinitemCategory.find_by("name LIKE?","%#{word}%")
-        return @skinitem_category.posts
+          skinitem_category = SkinitemCategory.find_by("name LIKE?","#{word}")
+          
+          return skinitem_category.present? ? skinitem_category.posts : []
+          
       else
-        @category = Category.find_by("name LIKE?","%#{word}%")
-        @category.posts
-        return @posts = Post.all
+          category = Category.find_by("name LIKE?","#{word}")
+          
+          return category.present? ? category.posts : []
+          
       end
     end
   end
 end
-
-
