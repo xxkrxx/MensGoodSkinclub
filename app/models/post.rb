@@ -12,8 +12,8 @@ class Post < ApplicationRecord
  scope :star_count, -> {order(star: :desc)}
 
 
-  validates :name, presence: true
-  validates :introduction, presence: true
+  validates :productname, presence: true
+  validates :comment, presence: true
 
 
   has_one_attached :image

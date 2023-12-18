@@ -21,18 +21,9 @@ class User < ApplicationRecord
     end
   end  
   
-  def user_status
-    if is_active == false
-      "退会"
-    else
-      "有効"
-    end
-  end
+
   
-    def active_for_authentication?
-      super && (is_active == true)
-    end
-  
+
   def self.looks(search, word)
     if search == "perfect_match"
       @user = User.where("name LIKE?", "#{word}")

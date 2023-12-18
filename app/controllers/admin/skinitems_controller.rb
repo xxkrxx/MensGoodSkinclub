@@ -14,7 +14,7 @@ class Admin::SkinitemsController < ApplicationController
   def create
     @skinitem = Skinitem.new(skin_item_params)
     if @skinitem.save
-      redirect_to admin_skinitems_path(@skinitem)
+      redirect_to admin_skinitem_path(@skinitem)
     else
       @skinitems = Skinitem.all
       render :new

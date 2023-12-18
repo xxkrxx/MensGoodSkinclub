@@ -9,17 +9,17 @@
       </div>
       <div class="row ml-5">
         <div class="col-3 p-3 border border-dark table-warning">会員ID</div>
-        <div class="col-5 p-3 border border-dark table-warning bg-white"><%= @user.id %>aaa</div>
+        <div class="col-5 p-3 border border-dark table-warning bg-white"><%= @user.id %></div>
       </div>
       
       <div class="row ml-5">
         <div class="col-3 p-3 border border-dark table-warning">氏名</div>
-        <div class="col-5 p-3 border border-dark table-warning bg-white"><%= @user.name %>aaa</div>
+        <div class="col-5 p-3 border border-dark table-warning bg-white"><%= @user.name %></div>
       </div>
       
       <div class="row ml-5">
         <div class="col-3 p-3 border border-dark table-warning">メールアドレス</div>
-        <div class="col-5 p-3 border border-dark table-warning bg-white"><%= @user.email %>aaa</div>
+        <div class="col-5 p-3 border border-dark table-warning bg-white"><%= @user.email %></div>
       </div>
       
       <div class="row ml-5">
@@ -27,8 +27,8 @@
         <div class="col-5 p-3 border border-dark table-warning bg-white">
           <%= f.radio_button :is_active, true,style: 'transform: scale(1.5);' %>
           <%= f.label :is_active,"有効" %>
-
-          <%= f.radio_button :is_active, false,style: 'transform: scale(1.5);',class: "ml-4" %>
+          
+          <%= f.radio_button :is_active,false,style: 'transform: scale(1.5);',class: "ml-4" %>
           <%= f.label :is_active,"退会" %>
         </div>
       </div>
