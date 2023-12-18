@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
+  validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
+  validates :profile, length: { maximum: 200 }
+  
   attachment :profile_image
   
   def self.guest

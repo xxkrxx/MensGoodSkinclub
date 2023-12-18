@@ -3,6 +3,10 @@ class Skinitem < ApplicationRecord
   belongs_to :category
   belongs_to :skin_concern
   belongs_to :skinitem_category
+  
+  validates :productname, presence: true
+  validates :comment, presence: true
+  validates :image, presence: true
 
 
 

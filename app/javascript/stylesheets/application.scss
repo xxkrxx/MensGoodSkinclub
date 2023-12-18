@@ -15,16 +15,13 @@ $danger: #a8001d;
 /* 背景色を指定 */
 body {
   background-color: #b8b9b6;
-  // min-height: ;
-}
-
-main{
-  min-height: 1400px;
+  height: 100%;
 }
 
 footer {
   position: sticky;
   margin-bottom: 0px;
+  margin-top: 50px;
   top: 100vh;
   width: 100%;
   height: 80px;
