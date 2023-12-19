@@ -9,17 +9,17 @@
         <div class="col-3 p-3 border border-dark table-warning">会員ID</div>
         <div class="col-5 p-3 border border-dark table-warning bg-white"><%= @user.id %>aaa</div>
       </div>
-      
+
       <div class="row ml-5">
         <div class="col-3 p-3 border border-dark table-warning">氏名</div>
         <div class="col-5 p-3 border border-dark table-warning bg-white"><%= @user.name %>aaa</div>
       </div>
-      
+
       <div class="row ml-5">
         <div class="col-3 p-3 border border-dark table-warning">メールアドレス</div>
         <div class="col-5 p-3 border border-dark table-warning bg-white"><%= @user.email %>aaa</div>
       </div>
-      
+
       <div class="row ml-5">
         <div class="col-3 p-3 border border-dark table-warning">会員ステータス</div>
         <div class="col-5 p-3 border border-dark table-warning bg-white">
@@ -30,11 +30,10 @@
         <% end %>
         </div>
       </div>
-      
+
       <div class="row mt-4 mx-auto justify-content-center">
-        <div class="col-3">
-        <%= link_to "編集する", edit_admin_user_path(@user),class: "btn btn-info" %>
-        </div>
+        <%= link_to "編集する", edit_admin_user_path(@user),class: "btn btn-info mt-3 mr-5" %>
+        <%= link_to "レビュー投稿一覧を見る",posts_path(@user),class: "btn btn-info mt-3 ml-5" %>
       </div>
     </div>
   </div>

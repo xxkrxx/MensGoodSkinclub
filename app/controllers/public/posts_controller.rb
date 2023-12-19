@@ -38,8 +38,8 @@ class Public::PostsController < ApplicationController
       redirect_to root_path
     else
       @comment = Comment.new
-    end
       @comments = @post.comments
+    end
   end
 
   def edit
