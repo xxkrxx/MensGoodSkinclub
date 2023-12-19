@@ -22,8 +22,6 @@ Rails.application.routes.draw do
     resources :skinitems
     resources :posts, only: [:index, :show]
     resources :users, only: [:index, :show, :edit, :update]
-    resources :categories, only: [:index, :create]
-    resources :skinconcerns, only: [:index, :create]
   end
 
   # 顧客用
