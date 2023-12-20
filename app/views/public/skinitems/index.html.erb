@@ -29,6 +29,11 @@
                           <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
                             <%= link_to "詳細を見る", skinitem_path(skinitem) %>
                           </p>
+                            <p class="text-center" style="font-weight: bold;">
+                              <div id="favorite_btn_<%= skinitem.id %>" >
+                              <%= render 'public/itemfavorites/btn', skinitem: skinitem %>
+                              </div>
+                            </p>
                         </div>
                       </div>
                     </div>

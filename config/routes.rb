@@ -38,7 +38,9 @@ Rails.application.routes.draw do
     patch 'withdraw' => 'users#withdraw'
     end
   end
-  resources :skinitems, only: [:index, :show]
-  get "search" => "searches#search"
+  resources :skinitems, only: [:index, :show] do
+  resource :itemfavorites, only: [:create, :destroy]
+    end
+    get "search" => "searches#search"
   end
 end

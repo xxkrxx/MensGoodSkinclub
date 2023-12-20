@@ -5,6 +5,11 @@ class Skinitem < ApplicationRecord
   belongs_to :skinitem_category
   
 
+  has_many :favorites, dependent: :destroy
+  
+  def favorited?(user)
+     favorites.exists?(user_id: user.id)
+  end
 
 
 

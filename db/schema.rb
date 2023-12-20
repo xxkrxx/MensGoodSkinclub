@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_15_003649) do
+ActiveRecord::Schema.define(version: 2023_12_20_051337) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -75,6 +75,15 @@ ActiveRecord::Schema.define(version: 2023_12_15_003649) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "itemfavorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "skinitem_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skinitem_id"], name: "index_itemfavorites_on_skinitem_id"
+    t.index ["user_id"], name: "index_itemfavorites_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "skin_concern_id", null: false
@@ -101,6 +110,7 @@ ActiveRecord::Schema.define(version: 2023_12_15_003649) do
   end
 
   create_table "skinitems", force: :cascade do |t|
+    t.integer "use_id"
     t.integer "category_id"
     t.integer "skin_concern_id"
     t.integer "skinitem_category_id"
@@ -132,4 +142,6 @@ ActiveRecord::Schema.define(version: 2023_12_15_003649) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "posts"
   add_foreign_key "favorites", "users"
+  add_foreign_key "itemfavorites", "skinitems"
+  add_foreign_key "itemfavorites", "users"
 end

@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :skinitems, dependent: :destroy
+  has_many :itemfavorites, dependent: :destroy
 
   # バリデーションの定義
   validates :name, presence: true, uniqueness: true, length: { in: 2..20 }

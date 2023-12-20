@@ -4,6 +4,7 @@ class Admin::SkinitemsController < ApplicationController
   # すべてのスキンアイテムの一覧を表示
   def index
     @skinitems = Skinitem.all
+    @skinitems = Skinitem.all.page(params[:page]).per(10)
   end
 
   # 新しいスキンアイテムのフォームおよび必要なデータを準備
