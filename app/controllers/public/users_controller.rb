@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  # ユーザー一覧を取得
   def index
     @users = User.all
   end
@@ -6,25 +7,29 @@ class Public::UsersController < ApplicationController
   def check
   end
 
+  # 特定のユーザーの詳細情報を取得
   def show
     @user = User.find(params[:id])
   end
 
+  # 特定のユーザーの編集ページを表示
   def edit
     @user = User.find(params[:id])
   end
 
+  # ユーザー情報の更新を処理
   def update
-      @user = User.find(params[:id])
+    @user = User.find(params[:id])
     if @user.update(user_params)
-       flash[:notice] = "ユーザー情報を更新しました。"
-       redirect_to user_path(@user)
+      flash[:notice] = "ユーザー情報を更新しました。"
+      redirect_to user_path(@user)
     else
-       flash[:alert] = "ユーザー情報の更新に失敗しました。入力内容を確認してください。"
-       render :edit
+      flash[:alert] = "ユーザー情報の更新に失敗しました。入力内容を確認してください。"
+      render :edit
     end
   end
   
+  # 退会処理を実行
   def withdraw
     @user = User.find(current_user.id)
     if @user.update(is_active: false)
@@ -37,11 +42,10 @@ class Public::UsersController < ApplicationController
     end
   end
 
-
   private
 
+  # パラメータの許可
   def user_params
-    params.require(:user).permit(:name, :email, :profile , :profile_image )
+    params.require(:user).permit(:name, :email, :profile, :profile_image)
   end
-
 end
