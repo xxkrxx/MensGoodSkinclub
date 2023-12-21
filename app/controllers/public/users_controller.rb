@@ -21,7 +21,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites= Itemfavorite.where(user_id: @user.id).pluck(:skinitem_id)
-    @favorite_posts = Skinitem.where(id: favorites).page(params[:page]).per(8)
+    @favorite_posts = Skinitem.where(id: favorites).page(params[:page]).per(6)
   end
 
 

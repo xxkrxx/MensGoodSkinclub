@@ -39,6 +39,9 @@
                     </div>
                   </div>
                 <% end %>
+                <div class="row mx-auto justify-content-center">
+                <%= paginate @skinitems %>
+                </div>
 
                 <section id="acne">
                   <h1 class="mt-4"><strong>ニキビに良い商品</strong></h1>
@@ -66,6 +69,10 @@
                     <% end %>
                   </div>
                 </section>
+                <div class="row mx-auto justify-content-center">
+                <%= paginate @acne %>
+                </div>
+                
 
                 <section id="pore">
                   <h1 class="mt-4"><strong>毛穴に良い商品</strong></h1>
