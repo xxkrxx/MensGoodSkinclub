@@ -27,7 +27,7 @@
 
 ​
 ## 設計書
-![ER図 (2)](https://github.com/xxkrxx/MensGoodSkinclub/assets/143770189/2a3f9e87-0f7b-44a5-a434-281b29649150)
+![ER図編集](https://github.com/xxkrxx/MensGoodSkinclub/assets/143770189/60208f50-5e98-4b5e-8d16-05333832cd67)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
