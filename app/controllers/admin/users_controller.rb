@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   
   # すべてのユーザーの一覧を表示
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(10)
   end
 
   # 特定のユーザーの詳細情報を表示
