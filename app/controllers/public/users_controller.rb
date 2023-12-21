@@ -17,6 +17,13 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    favorites= Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
+  end
+
+
   # ユーザー情報の更新を処理
   def update
     @user = User.find(params[:id])
@@ -28,7 +35,7 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   # 退会処理を実行
   def withdraw
     @user = User.find(current_user.id)

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -12,6 +12,9 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :skinitems, dependent: :destroy
   has_many :itemfavorites, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :like_items, through: :likes, source: :item
+
 
   # バリデーションの定義
   validates :name, presence: true, uniqueness: true, length: { in: 2..20 }

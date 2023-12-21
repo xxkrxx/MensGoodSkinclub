@@ -37,7 +37,11 @@ Rails.application.routes.draw do
     get 'check' => 'users#check'
     patch 'withdraw' => 'users#withdraw'
     end
+    member do
+    get :favorites
+    end
   end
+
   resources :skinitems, only: [:index, :show] do
   resource :itemfavorites, only: [:create, :destroy]
     end

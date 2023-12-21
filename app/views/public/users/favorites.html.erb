@@ -1,0 +1,23 @@
+<div class="card-deck">
+  <% @favorite_posts.each do |skinitem| %>
+    <div class="text-card-container mt-4">
+      <div class="card content-card border-dark">
+        <div class="card-header p-0">
+          <%= link_to skinitem_path(skinitem) do %>
+            <%= image_tag skinitem.get_image(200, 200), style: "height:150px; width:200px;" %>
+          <% end %>
+        </div>
+        <div class="card-body d-flex align-items-center">
+          <div>
+            <p class="card-title text-left">
+              <%= truncate(skinitem.product_name, length: 10, omission: '...') %>
+            </p>
+            <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
+              <%= link_to "詳細を見る", skinitem_path(skinitem) %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
