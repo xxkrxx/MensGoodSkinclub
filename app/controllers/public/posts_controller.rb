@@ -1,7 +1,6 @@
 class Public::PostsController < ApplicationController
   
   def index
-    @posts = Post.all
     @categories = Category.all
     @skin_concerns = SkinConcern.all
 
@@ -22,7 +21,7 @@ class Public::PostsController < ApplicationController
     elsif params[:star_count]
      @posts = Post.star_count
     else
-     @posts = Post.all
+     @posts = Post.all.page(params[:page]).per(9)
     end
   end
 

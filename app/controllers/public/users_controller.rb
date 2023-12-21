@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   # ユーザー一覧を取得
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(9)
   end
 
   def check
@@ -17,10 +17,11 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+
   def favorites
     @user = User.find(params[:id])
-    favorites= Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites)
+    favorites= Itemfavorite.where(user_id: @user.id).pluck(:skinitem_id)
+    @favorite_posts = Skinitem.find(favorites)
   end
 
 

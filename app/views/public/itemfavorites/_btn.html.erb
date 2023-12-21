@@ -1,11 +1,11 @@
 <% if skinitem.favorited?(current_user) %>
-  <p>
+  <p class="d-flex">
     <%= link_to skinitem_itemfavorites_path(skinitem.id), method: :delete, remote: true do %>
     <i class="fas fa-heart unlike-btn" ></i><%= skinitem.itemfavorites.count %>
     <% end %>
   </p>
 <% else %>
-  <p>
+  <p class="d-flex">
     <%= link_to skinitem_itemfavorites_path(skinitem.id), method: :post, remote: true do %>
       <i class="far fa-heart like-btn"></i><%= skinitem.itemfavorites.count %>
     <% end %>
