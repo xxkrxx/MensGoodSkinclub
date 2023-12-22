@@ -3,8 +3,9 @@
     <div class="col-6">
       <h1 class="mt-4"><strong> レビュー詳細ページ</strong></h1>
     </div>
-    <div class="col-2 offset-4">
-      <%= link_to '戻る', 'javascript:history.back()', class: 'btn btn-info' %>
+    <div class="col-3 offset-3">
+      <%= link_to '戻る', 'javascript:history.back()', class: 'btn btn-info mr-3' %>
+      <%= link_to 'マイページに戻る', user_path(current_user), class: 'btn btn-info' %>
     </div>
   </div>
 
