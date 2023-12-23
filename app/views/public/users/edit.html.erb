@@ -2,9 +2,7 @@
   <div class="row main-row">
     <div class="col-12">
      <h1 class="mt-4"><strong> マイページ編集画面</strong></h1>
-
      <%= render "public/shared/error_messages", resource: @user %>
-
      <%= form_with model: @user, url: user_path do |f| %>
 
        <div class="form-row mt-5">

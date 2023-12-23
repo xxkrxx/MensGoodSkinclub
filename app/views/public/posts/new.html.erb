@@ -2,12 +2,8 @@
   <div class="row">
     <div class="col-12">
       <h1 class="mt-4"><strong>新規レビュー投稿画面</strong></h1>
+      <%= render "public/shared/error_messages", resource: @post %>
       <%= form_with model: @post, url: posts_path, method: :post do |f| %>
-        <% if @post.errors.any? %>
-          <% @post.errors.full_messages.each do |message| %>
-            <%= message %>
-          <% end %>
-        <% end %>
 
         <div class="form-row mt-5">
           <span class="form-group col-3">商品画像</span>

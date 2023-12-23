@@ -28,25 +28,24 @@ ja:
         updated_at: 更新日
         
       post:
-        star: レビュー
+        star: 評価
         productname: 商品名
         comment: コメント
-        
+        skin_concern: 肌悩み
+        category: カテゴリー
+        skinitem_category: 商品ブランド
       skinitem:
         product_name: 商品名
         introduction: 商品説明
-        
-      skin_concerns:
-        name: 肌悩み
-        
-      categories:
-        name: カテゴリー
-        
-      skinitem_categories:
-        name: 商品ブランド
-        
+        skin_concern: 肌悩み
+        category: カテゴリー
+        skinitem_category: 商品ブランド
+    
     models:
       user: ユーザー
+      skin_concern: 肌悩み
+      category: カテゴリー
+      skinitem_category: 商品ブランド
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
@@ -159,5 +158,5 @@ ja:
       not_found: は見つかりませんでした。
       not_locked: はロックされていません。
       not_saved:
-        one: エラーが発生したため %{resource} は保存されませんでした。
+        one: エラーが発生したため %{resource} が保存されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
