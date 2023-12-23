@@ -18,7 +18,7 @@ module MensGoodSkinclub
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    
+
     config.i18n.default_locale = :ja
 
    # I18nライブラリに訳文の探索場所を指示する
