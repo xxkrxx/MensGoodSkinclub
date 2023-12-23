@@ -16,6 +16,7 @@ class Post < ApplicationRecord
   # バリデーションの定義
   validates :productname, presence: true
   validates :comment, presence: true
+  validates :star, presence: true
 
   # Active Storageを使用した画像の添付
   has_one_attached :image

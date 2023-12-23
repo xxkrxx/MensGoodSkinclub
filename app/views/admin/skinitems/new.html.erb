@@ -3,7 +3,8 @@
     <div class="col-12">
       <h1 class="mt-4"><strong>新規商品投稿画面</strong></h1>
       <%= form_with model: @skinitem, url: admin_skinitems_path do |f| %>
-  
+      <%= render "public/shared/error_messages", resource: @skinitem %>
+
         <div class="form-row mt-5">
           <span class="form-group col-3">商品画像</span>
           <div class="form-group col-3">

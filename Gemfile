@@ -61,14 +61,14 @@ gem 'kaminari'
 gem 'jquery-rails'
 
 gem 'dotenv-rails'
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem "enum_help"
+
 group :production do
   gem 'mysql2'
-
-gem "net-smtp"
-gem "net-pop"
-gem "net-imap"
-gem 'rails-i18n'
-gem 'devise-i18n-views'
-
+  gem "net-smtp"
+  gem "net-pop"
+  gem "net-imap"
 
 end

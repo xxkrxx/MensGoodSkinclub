@@ -1,28 +1,6 @@
 ja:
-  views:
-    pagination:
-      first: <i class="fas fa-angle-double-left"></i>
-      last: <i class="fas fa-angle-double-right"></i>
-      previous: <i class="fas fa-angle-left"></i>
-      next: <i class="fas fa-angle-right"></i>
-      truncate: "..."
-  devise:
-    failure:
-      invalid: メールアドレスまたはパスワードが正しくありません。
-    sessions:
-      signed_in: ログインに成功しました。
-      signed_out: ログアウトしました。
-    registrations:
-      user:
-      signed_up: "アカウント登録が完了しました。"
-      signed_up: "アカウント登録が完了しました。"
-  errors:
-    messages:
-      not_saved:
-        one: '1件のエラーが発生したため %{resource} は保存されませんでした。'
-        other: '%{count} 件のエラーが発生したため %{resource} は保存されませんでした。'
   activerecord:
-    errors:
+    attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
@@ -32,6 +10,7 @@ ja:
         current_sign_in_at: 現在のログイン時刻
         current_sign_in_ip: 現在のログインIPアドレス
         email: Eメール
+        name: 名前
         encrypted_password: 暗号化パスワード
         failed_attempts: 失敗したログイン試行回数
         last_sign_in_at: 最終ログイン時刻
@@ -47,6 +26,25 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+        
+      post:
+        star: レビュー
+        productname: 商品名
+        comment: コメント
+        
+      skinitem:
+        product_name: 商品名
+        introduction: 商品説明
+        
+      skin_concerns:
+        name: 肌悩み
+        
+      categories:
+        name: カテゴリー
+        
+      skinitem_categories:
+        name: 商品ブランド
+        
     models:
       user: ユーザー
   devise:

@@ -7,6 +7,9 @@ class Skinitem < ApplicationRecord
   has_many :itemfavorites, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
+  validates :product_name, presence: true
+  validates :introduction, presence: true
+  
   def favorited?(user)
      itemfavorites.exists?(user_id: user.id)
   end

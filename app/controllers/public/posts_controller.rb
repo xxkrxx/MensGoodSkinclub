@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  
+
   def index
     @categories = Category.all
     @skin_concerns = SkinConcern.all
@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
       @skin_concern = SkinConcern.find(params[:skin_concern_id])
       @posts = @skin_concern.posts
     end
-    
+
     if params[:latest]
      @posts = Post.latest
     elsif params[:old]
@@ -67,7 +67,6 @@ class Public::PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       flash[:alert] = "投稿に失敗しました。入力内容を確認してください。"
-      puts @post.errors.full_messages
       render :new
     end
   end
