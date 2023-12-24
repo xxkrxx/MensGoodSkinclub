@@ -4,21 +4,21 @@
     <% categories.each do |category| %>
       <tr>
         <td style="text-align: left; color: #583822;">
-          <%= link_to category.name, posts_path(category_id: category.id), method: :get, class: "text-decoration-none text-dark" %>
+          <%= link_to category.name, posts_path(parent_type: "category", parent_id: category.id), method: :get, class: "text-decoration-none text-dark" %>
         </td>
       </tr>
     <% end %>
   </tbody>
-</table>  
-    
-    
+</table>
+
+
 <h4 class="mt-2"><strong>肌悩み</strong></h4>
 <table class="table">
   <tbody>
     <% skin_concerns.each do |skin_concern| %>
       <tr>
         <td style="text-align: left; color: #583822;">
-          <%= link_to skin_concern.name, posts_path(skin_concern_id: skin_concern.id), method: :get, class: "text-decoration-none text-dark" %>
+          <%= link_to skin_concern.name, posts_path(parent_type: "skin_concern", parent_id: skin_concern.id), method: :get, class: "text-decoration-none text-dark" %>
         </td>
       </tr>
     <% end %>

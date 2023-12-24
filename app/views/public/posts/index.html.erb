@@ -6,9 +6,9 @@
     <div class="col-10">
       <h1 class="mt-4"><strong>商品レビュー 一覧ページ</strong></h1>
       <p>
-      <%= link_to '新しい順', posts_path(latest: "true"), style: "text-decoration: none;" %>｜
-      <%= link_to '古い順', posts_path(old: "true"), style: "text-decoration: none;" %>｜
-      <%= link_to '評価の高い順', posts_path(star_count: "true"), style: "text-decoration: none;" %>
+        <%= link_to '新しい順', posts_path(order: "latest", parent_type: params[:parent_type], parent_id: params[:parent_id]), style: "text-decoration: none;" %>｜
+        <%= link_to '古い順', posts_path(order: "old", parent_type: params[:parent_type], parent_id: params[:parent_id]), style: "text-decoration: none;" %>｜
+        <%= link_to '評価の高い順', posts_path(order: "star_count", parent_type: params[:parent_type], parent_id: params[:parent_id]), style: "text-decoration: none;" %>
       </p>
       <div class="base-container mw-xl">
         <div class="text-wrapper">
@@ -20,7 +20,7 @@
                     <div class="card content-card border-dark">
                       <div class="card-header p-0">
                         <%= link_to post_path(post) do %>
-                        <%= image_tag post.get_image(200,200), style: "height:150px; width:200px;" %>
+                          <%= image_tag post.get_image(200, 200), style: "height:150px; width:200px;" %>
                         <% end %>
                       </div>
                       <div class="card-body d-flex align-items-center">
@@ -28,8 +28,8 @@
                           <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
                             <%= link_to post.user.name, user_path(post.user) %>
                           </p>
-                           <p class="card-title text-left">
-                             <%= truncate(post.productname,length: 10, omission: '...') %>
+                          <p class="card-title text-left">
+                            <%= truncate(post.productname, length: 10, omission: '...') %>
                           </p>
                           <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
                             <%= link_to "詳細を見る", post_path(post) %>
@@ -56,7 +56,7 @@
 
                           <div class="d-flex justify-content-between">
                             <p class="text-center" style="font-weight: bold;">
-                            <i class="fa-solid fa-comment"></i><%= post.comments.count %>
+                              <i class="fa-solid fa-comment"></i><%= post.comments.count %>
                             </p>
                             <div id="favorite_btn_<%= post.id %>" >
                               <%= render 'public/favorites/btn', post: post %>
@@ -79,6 +79,7 @@
     </div>
   </div>
 </div>
+
 <div class="row mx-auto justify-content-center">
   <%= paginate @posts %>
 </div>

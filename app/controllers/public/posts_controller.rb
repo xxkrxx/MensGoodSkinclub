@@ -3,25 +3,24 @@ class Public::PostsController < ApplicationController
   def index
     @categories = Category.all
     @skin_concerns = SkinConcern.all
+    @posts = Post.all.page(params[:page]).per(9)
 
-    if params[:category_id].present?
-      @category = Category.find(params[:category_id])
-      @posts = @category.posts
+    if params[:parent_type].present? && params[:parent_id].present?
+      case params[:parent_type]
+      when "category"
+        @posts = @posts.where(category_id: params[:parent_id])
+      when "skin_concern"
+        @posts = @posts.where(skin_concern_id: params[:parent_id])
+      end
     end
 
-    if params[:skin_concern_id].present?
-      @skin_concern = SkinConcern.find(params[:skin_concern_id])
-      @posts = @skin_concern.posts
-    end
-
-    if params[:latest]
-     @posts = Post.latest
-    elsif params[:old]
-     @posts = Post.old
-    elsif params[:star_count]
-     @posts = Post.star_count
-    else
-     @posts = Post.all.page(params[:page]).per(9)
+    case params[:order]
+    when "latest"
+      @posts = @posts.latest
+    when "old"
+      @posts = @posts.old
+    when "star_count"
+      @posts = @posts.star_count
     end
   end
 
