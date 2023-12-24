@@ -5,7 +5,6 @@ class Skinitem < ApplicationRecord
   belongs_to :skinitem_category
   
   has_many :itemfavorites, dependent: :destroy
-  has_many :favorites, dependent: :destroy
   
   validates :product_name, presence: true
   validates :introduction, presence: true
