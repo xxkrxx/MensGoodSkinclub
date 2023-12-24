@@ -10,7 +10,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   #サインアップ後のリダイレクト先を指定
   def after_sign_up_path_for(resource)
-    flash[:notice] = "welcome Mens SkinClub"
+    flash[:notice] = "Welcome Mens SkinClub"
     user_path(current_user)
   end
 
