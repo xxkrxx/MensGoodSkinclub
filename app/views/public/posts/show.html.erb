@@ -82,7 +82,7 @@
               <%= form_with model:[@post, @comment], local: false do |f| %>
                 <%= f.text_area :comment, rows: '5', placeholder: "Any comments on this post?", class: "form-control mt-3", id: "comment_textarea" %>
                 <div class="text-right">
-                  <%= f.submit "Submit", class: "btn btn-primary mt-3 mb-3" %>
+                  <%= f.submit "送信", class: "btn btn-success mt-3 mb-3" %>
                 </div>
               <% end %>
             </div>
