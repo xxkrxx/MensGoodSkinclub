@@ -2,64 +2,65 @@
   <div class="row">
     <div class="col-6">
       <h1 class="mt-4"><strong> レビュー詳細ページ</strong></h1>
-      </div>
-      <div class="col-2 offset-4">
+    </div>
+    <div class="col-2 offset-4">
       <%= link_to '戻る', 'javascript:history.back()', class: 'btn btn-info' %>
-      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 mx-auto text-center">
+      <%= image_tag @post.get_image(300, 300), style: "width:300px" %>
+    </div>
+    <div class="col-7 offset-1 mt-4">
+      <div class="row">
+        <div class="col-4">
+          <p class="font-weight-bold">商品名</p>
+        </div>
+        <div class="col-8">
+          <%= @post.productname %>
+        </div>
       </div>
       <div class="row">
-        <div class="col-4 mx-auto text-center">
-          <%= image_tag @post.get_image(300, 300), style: "width:300px" %>
+        <div class="col-4">
+          <p class="font-weight-bold">商品説明</p>
         </div>
-      <div class="col-7 offset-1 mt-4">
-        <div class="row">
-          <div class="col-4">
-            <p class="font-weight-bold">商品名</p>
-          </div>
-          <div class="col-8">
-            <%= @post.productname %>
-          </div>
+        <div class="col-8">
+          <%= @post.comment %>
         </div>
-        <div class="row">
-          <div class="col-4">
-            <p class="font-weight-bold">商品説明</p>
-          </div>
-          <div class="col-8">
-            <%= @post.comment %>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <p class="font-weight-bold">肌悩み</p>
         </div>
-        <div class="row">
-          <div class="col-4">
-            <p class="font-weight-bold">肌悩み</p>
-          </div>
-          <div class="col-8">
-            <%= @post.skin_concern.name %>
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-4">
-            <p class="font-weight-bold">商品ブランド</p>
-          </div>
-          <div class="col-8">
+        <div class="col-8">
+          <%= @post.skin_concern.name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <p class="font-weight-bold">商品ブランド</p>
+        </div>
+        <div class="col-8">
           <%= @post.skinitem_category.name %>
-            </div>
-          </div>
-        <div class="row">
-          <div class="col-4">
-            <p class="font-weight-bold">カテゴリー</p>
-          </div>
-          <div class="col-8">
-             <%= @post.category.name %>
-          </div>
         </div>
-        <div class="row">
-          <div class="col-4">
-            <p class="font-weight-bold">評価</p>
-          </div>
-          <div class="col-8">
-            <span id="star_<%= @post.id %>">
-                <script>
-                $(document).on('turbolinks:load', function() {
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <p class="font-weight-bold">カテゴリー</p>
+        </div>
+        <div class="col-8">
+          <%= @post.category.name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <p class="font-weight-bold">評価</p>
+        </div>
+        <div class="col-8">
+          <span id="star_<%= @post.id %>">
+            <script>
+              $(document).on('turbolinks:load', function() {
                 let elem = document.querySelector('#star_<%= @post.id %>');
                 if (elem == null) return;
 
@@ -73,26 +74,24 @@
                 };
                 raty(elem, opt);
               });
-              </script>
-            </span>
-            <span id="favorite_btn_<%= @post.id %>" class="d-flex" style="flex-direction: row-reverse;" >
-              <%= render 'public/favorites/btn', post: @post %>
-            </span>
-            <div class="text-right">
-              <%= form_with model:[@post, @comment], local: false do |f| %>
-                <%= f.text_area :comment, rows: '5', placeholder: "Any comments on this post?", class: "form-control mt-3", id: "comment_textarea" %>
-                <div class="text-right">
-                  <%= f.submit "送信", class: "btn btn-success mt-3 mb-3" %>
-                </div>
-              <% end %>
-            </div>
+            </script>
+          </span>
+          <span id="favorite_btn_<%= @post.id %>" class="d-flex" style="flex-direction: row-reverse;">
+            <%= render 'public/favorites/btn', post: @post %>
+          </span>
+          <div class="text-right">
+            <%= form_with model:[@post, @comment], local: false do |f| %>
+              <%= f.text_area :comment, rows: '5', placeholder: "Any comments on this post?", class: "form-control mt-3", id: "comment_textarea" %>
+              <div class="text-right">
+                <%= f.submit "送信", class: "btn btn-success mt-3 mb-3" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-<div class="container">
   <div class="row">
     <div class="col-12 d-flex" style="flex-direction: row-reverse;">
       <div id="comment_show">
