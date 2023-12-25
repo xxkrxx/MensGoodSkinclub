@@ -41,53 +41,53 @@ class Post < ApplicationRecord
   def self.looks(search, word, skin_type)
     if search == "perfect_match"
       if skin_type == "skin_concern"
-        skin_concern = SkinConcern.find_by("name LIKE ?", "#{word}")
-        return skin_concern.present? ? skin_concern.posts : []
+        skin_concern_ids = SkinConcern.where("name LIKE ?", "#{word}").pluck(:id)
+        return skin_concern_ids.present? ? Post.where(skin_concern_id: skin_concern_ids) : []
       elsif skin_type == "skinitem_category"
-        skinitem_category = SkinitemCategory.find_by("name LIKE ?", "#{word}")
-        return skinitem_category.present? ? skinitem_category.posts : []
+        skinitem_category_ids = SkinitemCategory.where("name LIKE ?", "#{word}").pluck(:id)
+        return skinitem_category_ids.present? ? Post.where(skinitem_category_id: skinitem_category_ids) : []
       else
-        category = Category.find_by("name LIKE ?", "#{word}")
-        return category.present? ? category.posts : []
+        category_ids = Category.where("name LIKE ?", "#{word}").pluck(:id)
+        return category_ids.present? ? Post.where(category_id: category_ids) : []
       end
     end
 
     if search == "forward_match"
       if skin_type == "skin_concern"
-        skin_concern = SkinConcern.find_by("name LIKE ?", "#{word}%")
-        return skin_concern.present? ? skin_concern.posts : []
+        skin_concern_ids = SkinConcern.where("name LIKE ?", "#{word}%").pluck(:id)
+        return skin_concern_ids.present? ? Post.where(skin_concern_id: skin_concern_ids): []
       elsif skin_type == "skinitem_category"
-        skinitem_category = SkinitemCategory.find_by("name LIKE ?", "#{word}%")
-        return skinitem_category.present? ? skinitem_category.posts : []
+        skinitem_category_ids = SkinitemCategory.where("name LIKE ?", "#{word}%").pluck(:id)
+        return skinitem_category_ids.present? ? Post.where(skinitem_category_id: skinitem_category_ids) : []
       else
-        category = Category.find_by("name LIKE ?", "#{word}%")
-        return category.present? ? category.posts : []
+        category_ids = Category.where("name LIKE ?", "#{word}%").pluck(:id)
+        return category_ids.present? ? Post.where(category_id: category_ids) : []
       end
     end
 
     if search == "backward_match"
       if skin_type == "skin_concern"
-        skin_concern = SkinConcern.find_by("name LIKE ?", "%#{word}")
-        return skin_concern.present? ? skin_concern.posts : []
+        skin_concern_ids = SkinConcern.where("name LIKE ?", "%#{word}").pluck(:id)
+        return skin_concern_ids.present? ? Post.where(skin_concern_id: skin_concern_ids ) : []
       elsif skin_type == "skinitem_category"
-        skinitem_category = SkinitemCategory.find_by("name LIKE ?", "%#{word}")
-        return skinitem_category.present? ? skinitem_category.posts : []
+          skinitem_category_ids = SkinitemCategory.where("name LIKE ?", "%#{word}").pluck(:id)
+          return skinitem_category_ids.present? ? Post.where(skinitem_category_id: skinitem_category_ids) : []
       else
-        category = Category.find_by("name LIKE ?", "%#{word}")
-        return category.present? ? category.posts : []
+        category_ids = Category.where("name LIKE ?", "%#{word}").pluck(:id)
+        return category_ids.present? ? Post.where(category_id: category_ids ) : []
       end
     end
 
     if search == "partial_match"
       if skin_type == "skin_concern"
-        skin_concern = SkinConcern.find_by("name LIKE ?", "%#{word}%")
-        return skin_concern.present? ? skin_concern.posts : []
+        skin_concern_ids = SkinConcern.where("name LIKE ?", "%#{word}%").pluck(:id)
+        return skin_concern_ids.present? ? Post.where(skin_concern_id: skin_concern_ids) : []
       elsif skin_type == "skinitem_category"
-        skinitem_category = SkinitemCategory.find_by("name LIKE ?", "%#{word}%")
-        return skinitem_category.present? ? skinitem_category.posts : []
+        skinitem_category_ids = SkinitemCategory.where("name LIKE ?", "%#{word}%").pluck(:id)
+        return skinitem_category_ids.present? ? Post.where(skinitem_category_id: skinitem_category_ids) : []
       else
-        category = Category.find_by("name LIKE ?", "%#{word}%")
-        return category.present? ? category.posts : []
+        category_ids = Category.where("name LIKE ?", "%#{word}%").pluck(:id)
+        return category_ids.present? ? Post.where(category_id: category_ids) : []
       end
     end
   end
