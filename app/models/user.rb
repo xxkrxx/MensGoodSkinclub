@@ -24,11 +24,15 @@ class User < ApplicationRecord
   attachment :profile_image
 
   # ゲストユーザーの作成または取得
+  
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
+      user.name = 'Guest'
+      user.other_attributes = 'default_values'
       user.password = SecureRandom.urlsafe_base64
     end
   end
+
 
   # 名前の検索条件に基づくユーザーの取得
   def self.looks(search, word)
