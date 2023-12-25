@@ -29,7 +29,13 @@ class Admin::PostsController < ApplicationController
       flash[:alert] = "指定された投稿が見つかりません。"
       redirect_to root_path
     end
-  end  
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to admin_posts_path, notice: "レビューを削除しました。"
+  end
 end
 
 

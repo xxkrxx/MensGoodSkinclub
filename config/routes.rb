@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :skinitems
-    resources :posts, only: [:index, :show]
+    resources :posts, only: [:index, :show, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
   end
 
