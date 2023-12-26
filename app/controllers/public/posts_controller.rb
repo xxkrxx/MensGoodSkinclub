@@ -1,10 +1,17 @@
 class Public::PostsController < ApplicationController
+  # ログインユーザーのみアクセス可能（indexアクションは例外）
+  before_action :authenticate_user!, except: [:index]
 
+  # レビュー一覧ページ
   def index
+    # カテゴリとスキンコンサーンを取得
     @categories = Category.all
     @skin_concerns = SkinConcern.all
+
+    # ページネーション設定
     @posts = Post.all.page(params[:page]).per(9)
 
+    # カテゴリや肌悩みで絞り込み
     if params[:parent_type].present? && params[:parent_id].present?
       case params[:parent_type]
       when "category"
@@ -14,6 +21,7 @@ class Public::PostsController < ApplicationController
       end
     end
 
+    # ソートオプションによる並び替え
     case params[:order]
     when "latest"
       @posts = @posts.latest
@@ -24,12 +32,15 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  # レビュー投稿ページ
   def new
     @post = Post.new
     @categories = Category.all
   end
 
+  # レビュー詳細ページ
   def show
+    # 投稿が存在しない場合の処理
     @post = Post.find_by(id: params[:id])
     if @post.nil?
       flash[:alert] = "指定された投稿が見つかりません。"
@@ -40,17 +51,24 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  # レビュー編集ページ
   def edit
     @post = Post.find(params[:id])
+
+    # 不正なアクセスの場合の処理
     if @post.user != current_user
-        redirect_to posts_path, alert: "不正なアクセスです。"
+      redirect_to posts_path, alert: "不正なアクセスです。"
     end
+
     @categories = Category.all
     @skinitem_categories = SkinitemCategory.all
   end
 
+  # レビュー更新アクション
   def update
     @post = Post.find(params[:id])
+
+    # レビューが正常に更新された場合の処理
     if @post.update(post_params)
       redirect_to post_path(@post)
     else
@@ -58,9 +76,12 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  # レビュー作成アクション
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+
+    # レビューが正常に保存された場合の処理
     if @post.save
       flash[:notice] = "投稿が成功しました。"
       redirect_to post_path(@post)
@@ -70,14 +91,14 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  # レビュー削除アクション
   def destroy
     post = Post.find(params[:id])
     post.destroy
     redirect_to user_path(post.user), notice: "レビューを削除しました。"
   end
 
-
-private
+  private
 
 
   def post_params

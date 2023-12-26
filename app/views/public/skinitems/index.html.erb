@@ -3,7 +3,7 @@
     <div class="col-12">
       <h1 class="mt-4"><strong>オススメ商品 一覧ページ</strong></h1>
       <ul class="d-flex justify-content-center" style="color: black; list-style: none;">
-        <li class="mr-5"><a href="#acne" style="color: black; text-decoration: none;"><strong><i class="fa-solid fa-magnifying-glass"></i>　ニキビ</strong></a></li>
+        <li class="mr-5"><a href="#acne" style="color: black; text-decoration: none;"><strong><i class="fa-solid fa-magnifying-glass"></i> ニキビ</strong></a></li>
         <li class="mr-5"><a href="#pore" style="color: black; text-decoration: none;"><strong>毛穴</strong></a></li>
         <li><a href="#whitening" style="color: black; text-decoration: none;"><strong>美白</strong></a></li>
       </ul>
@@ -29,116 +29,115 @@
                           <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
                             <%= link_to "詳細を見る", skinitem_path(skinitem) %>
                           </p>
-                            <p style="font-weight: bold;">
-                              <div id="favorite_btn_<%= skinitem.id %>" >
+                          <p style="font-weight: bold;">
+                            <div id="favorite_btn_<%= skinitem.id %>" >
                               <%= render 'public/itemfavorites/btn', skinitem: skinitem %>
-                              </div>
-                            </p>
+                            </div>
+                          </p>
                         </div>
                       </div>
                     </div>
                   </div>
                 <% end %>
-                <div class="row mx-auto justify-content-center">
+              </div>
+              <div class="row mx-auto justify-content-center">
                 <%= paginate @skinitems %>
-                </div>
               </div>
 
-                <section id="acne">
-                  <h1 class="mt-4"><strong>ニキビに良い商品</strong></h1>
-                  <div class="card-deck">
-                    <% @acne.each do |skinitem| %>
-                      <div class="text-card-container mt-4">
-                        <div class="card content-card border-dark">
-                          <div class="card-header p-0">
-                            <%= link_to skinitem_path(skinitem) do %>
-                              <%= image_tag skinitem.get_image(200, 200), style: "height:150px; width:200px;" %>
-                            <% end %>
-                          </div>
-                          <div class="card-body d-flex align-items-center">
-                            <div>
-                              <p class="card-title text-left">
-                                <%= truncate(skinitem.product_name, length: 10, omission: '...') %>
-                              </p>
-                              <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
-                                <%= link_to "詳細を見る", skinitem_path(skinitem) %>
-                              </p>
-                            </div>
+              <section id="acne">
+                <h1 class="mt-4"><strong>ニキビに良い商品</strong></h1>
+                <div class="card-deck">
+                  <% @acne.each do |skinitem| %>
+                    <div class="text-card-container mt-4">
+                      <div class="card content-card border-dark">
+                        <div class="card-header p-0">
+                          <%= link_to skinitem_path(skinitem) do %>
+                            <%= image_tag skinitem.get_image(200, 200), style: "height:150px; width:200px;" %>
+                          <% end %>
+                        </div>
+                        <div class="card-body d-flex align-items-center">
+                          <div>
+                            <p class="card-title text-left">
+                              <%= truncate(skinitem.product_name, length: 10, omission: '...') %>
+                            </p>
+                            <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
+                              <%= link_to "詳細を見る", skinitem_path(skinitem) %>
+                            </p>
                           </div>
                         </div>
                       </div>
-                    <% end %>
-                  </div>
-                  <div class="row mx-auto justify-content-center">
-                  <%= paginate @acne %>
-                  </div>
-                </section>
-
-
-                <section id="pore">
-                  <h1 class="mt-4"><strong>毛穴に良い商品</strong></h1>
-                  <div class="card-deck">
-                    <% @pore.each do |skinitem| %>
-                      <div class="text-card-container mt-4">
-                        <div class="card content-card border-dark">
-                          <div class="card-header p-0">
-                            <%= link_to skinitem_path(skinitem) do %>
-                              <%= image_tag skinitem.get_image(200, 200), style: "height:150px; width:200px;" %>
-                            <% end %>
-                          </div>
-                          <div class="card-body d-flex align-items-center">
-                            <div>
-                              <p class="card-title text-left">
-                                <%= truncate(skinitem.product_name, length: 10, omission: '...') %>
-                              </p>
-                              <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
-                                <%= link_to "詳細を見る", skinitem_path(skinitem) %>
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    <% end %>
-                  </div>
+                    </div>
+                  <% end %>
+                </div>
                 <div class="row mx-auto justify-content-center">
-                <%= paginate @pore %>
+                  <%= paginate @acne, :param_name => 'acne_page' %>
                 </div>
-                </section>
+              </section>
 
-                <section id="whitening">
-                  <h1 class="mt-4"><strong>美白に良い商品</strong></h1>
-                  <div class="card-deck">
-                    <% @whitening.each do |skinitem| %>
-                      <div class="text-card-container mt-4">
-                        <div class="card content-card border-dark">
-                          <div class="card-header p-0">
-                            <%= link_to skinitem_path(skinitem) do %>
-                              <%= image_tag skinitem.get_image(200, 200), style: "height:150px; width:200px;" %>
-                            <% end %>
-                          </div>
-                          <div class="card-body d-flex align-items-center">
-                            <div>
-                              <p class="card-title text-left">
-                                <%= truncate(skinitem.product_name, length: 10, omission: '...') %>
-                              </p>
-                              <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
-                                <%= link_to "詳細を見る", skinitem_path(skinitem) %>
-                              </p>
-                            </div>
+              <section id="pore">
+                <h1 class="mt-4"><strong>毛穴に良い商品</strong></h1>
+                <div class="card-deck">
+                  <% @pore.each do |skinitem| %>
+                    <div class="text-card-container mt-4">
+                      <div class="card content-card border-dark">
+                        <div class="card-header p-0">
+                          <%= link_to skinitem_path(skinitem) do %>
+                            <%= image_tag skinitem.get_image(200, 200), style: "height:150px; width:200px;" %>
+                          <% end %>
+                        </div>
+                        <div class="card-body d-flex align-items-center">
+                          <div>
+                            <p class="card-title text-left">
+                              <%= truncate(skinitem.product_name, length: 10, omission: '...') %>
+                            </p>
+                            <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
+                              <%= link_to "詳細を見る", skinitem_path(skinitem) %>
+                            </p>
                           </div>
                         </div>
                       </div>
-                    <% end %>
-                  </div>
-                  <div class="row mx-auto justify-content-center">
-                <%= paginate @whitening %>
+                    </div>
+                  <% end %>
                 </div>
-                </section>
-              </div>
+                <div class="row mx-auto justify-content-center">
+                  <%= paginate @pore, :param_name => 'pore_page' %>
+                </div>
+              </section>
+
+              <section id="whitening">
+                <h1 class="mt-4"><strong>美白に良い商品</strong></h1>
+                <div class="card-deck">
+                  <% @whitening.each do |skinitem| %>
+                    <div class="text-card-container mt-4">
+                      <div class="card content-card border-dark">
+                        <div class="card-header p-0">
+                          <%= link_to skinitem_path(skinitem) do %>
+                            <%= image_tag skinitem.get_image(200, 200), style: "height:150px; width:200px;" %>
+                          <% end %>
+                        </div>
+                        <div class="card-body d-flex align-items-center">
+                          <div>
+                            <p class="card-title text-left">
+                              <%= truncate(skinitem.product_name, length: 10, omission: '...') %>
+                            </p>
+                            <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
+                              <%= link_to "詳細を見る", skinitem_path(skinitem) %>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="row mx-auto justify-content-center">
+                  <%= paginate @whitening, :param_name => 'whitening_page' %>
+                </div>
+              </section>
+              
             </div>
           </div>
         </div>
-      
+      </div>
     </div>
   </div>
 </div>
