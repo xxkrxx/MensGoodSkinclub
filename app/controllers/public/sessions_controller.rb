@@ -2,14 +2,16 @@
 
 class Public::SessionsController < Devise::SessionsController
   before_action :reject_user, only: [:create]
-   #サインインする前にconfigure_sign_in_paramsメソッド実行
+  # サインインする前に reject_user メソッドを実行
+
   before_action :configure_sign_in_params, only: [:create]
-  #サインインする前にcustomer_state実行
-  before_action :user_state,only: [:creste]
+  # サインインする前に configure_sign_in_params メソッドを実行
+  before_action :user_state, only: [:creste]
+  # サインインする前に user_state メソッドを実行
 
   def after_sign_in_path_for(resource)
     flash[:notice] = "welcome Mens SkinClub"
-      users_path
+    users_path
   end
 
   def after_sign_out_path_for(resource)
@@ -17,11 +19,11 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def destory
-    signed_out =(Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
+    signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
     set_flash_message! :alert, signed_out if signed_out
     respond_to_on_destory
   end
-  
+
   def guest_sign_in
     user = User.guest
     sign_in user
@@ -30,11 +32,11 @@ class Public::SessionsController < Devise::SessionsController
 
   protected
 
-   #サインインするときのカラムの許可
-   def configure_sign_in_params
-     devise_parameter_sanitizer.permit(:sign_in, keys: [:emai])
-   end
-   
+  # サインイン時のカラムの許可
+  def configure_sign_in_params
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
+  end
+
   def reject_user
     @user = User.find_by(email: params[:user][:email])
     if @user
