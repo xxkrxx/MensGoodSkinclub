@@ -42,53 +42,53 @@ class Post < ApplicationRecord
   def self.looks(search, word, skin_type)
     if search == "perfect_match"
       if skin_type == "skin_concern"
-        skin_concern_ids = SkinConcern.where("name LIKE ?", "#{word}").pluck(:id)
-        return skin_concern_ids.present? ? Post.where(skin_concern_id: skin_concern_ids) : []
+        skin_concern_ids = SkinConcern.where("name LIKE ?", "#{word}").pluck(:id) # SkinConcernテーブルからnameが部分一致するレコードのIDを取得
+        return skin_concern_ids.present? ? Post.where(skin_concern_id: skin_concern_ids) : [] # 取得したIDが存在する場合、それに対応するPostを取得。存在しない場合は空の配列を返す
       elsif skin_type == "skinitem_category"
-        skinitem_category_ids = SkinitemCategory.where("name LIKE ?", "#{word}").pluck(:id)
-        return skinitem_category_ids.present? ? Post.where(skinitem_category_id: skinitem_category_ids) : []
+        skinitem_category_ids = SkinitemCategory.where("name LIKE ?", "#{word}").pluck(:id) # SkinitemCategoryテーブルからnameが部分一致するレコードのIDを取得
+        return skinitem_category_ids.present? ? Post.where(skinitem_category_id: skinitem_category_ids) : [] # 取得したIDが存在する場合、それに対応するPostを取得。存在しない場合は空の配列を返す
       else
-        category_ids = Category.where("name LIKE ?", "#{word}").pluck(:id)
-        return category_ids.present? ? Post.where(category_id: category_ids) : []
+        category_ids = Category.where("name LIKE ?", "#{word}").pluck(:id) # Categoryテーブルからnameが部分一致するレコードのIDを取得
+        return category_ids.present? ? Post.where(category_id: category_ids) : [] # 取得したIDが存在する場合、それに対応するPostを取得。存在しない場合は空の配列を返す
       end
     end
 
     if search == "forward_match"
       if skin_type == "skin_concern"
-        skin_concern_ids = SkinConcern.where("name LIKE ?", "#{word}%").pluck(:id)
-        return skin_concern_ids.present? ? Post.where(skin_concern_id: skin_concern_ids): []
+        skin_concern_ids = SkinConcern.where("name LIKE ?", "#{word}%").pluck(:id) # SkinConcernテーブルからnameが部分一致するレコードのIDを取得
+        return skin_concern_ids.present? ? Post.where(skin_concern_id: skin_concern_ids): [] # 取得したIDが存在する場合、それに対応するPostを取得。存在しない場合は空の配列を返す
       elsif skin_type == "skinitem_category"
-        skinitem_category_ids = SkinitemCategory.where("name LIKE ?", "#{word}%").pluck(:id)
-        return skinitem_category_ids.present? ? Post.where(skinitem_category_id: skinitem_category_ids) : []
+        skinitem_category_ids = SkinitemCategory.where("name LIKE ?", "#{word}%").pluck(:id) # SkinitemCategoryテーブルからnameが部分一致するレコードのIDを取得
+        return skinitem_category_ids.present? ? Post.where(skinitem_category_id: skinitem_category_ids) : [] # 取得したIDが存在する場合、それに対応するPostを取得。存在しない場合は空の配列を返す
       else
-        category_ids = Category.where("name LIKE ?", "#{word}%").pluck(:id)
-        return category_ids.present? ? Post.where(category_id: category_ids) : []
+        category_ids = Category.where("name LIKE ?", "#{word}%").pluck(:id) # Categoryテーブルからnameが部分一致するレコードのIDを取得
+        return category_ids.present? ? Post.where(category_id: category_ids) : [] # 取得したIDが存在する場合、それに対応するPostを取得。存在しない場合は空の配列を返す
       end
     end
 
     if search == "backward_match"
       if skin_type == "skin_concern"
-        skin_concern_ids = SkinConcern.where("name LIKE ?", "%#{word}").pluck(:id)
-        return skin_concern_ids.present? ? Post.where(skin_concern_id: skin_concern_ids ) : []
+        skin_concern_ids = SkinConcern.where("name LIKE ?", "%#{word}").pluck(:id) # SkinConcernテーブルからnameが部分一致するレコードのIDを取得
+        return skin_concern_ids.present? ? Post.where(skin_concern_id: skin_concern_ids ) : [] # 取得したIDが存在する場合、それに対応するPostを取得。存在しない場合は空の配列を返す
       elsif skin_type == "skinitem_category"
-          skinitem_category_ids = SkinitemCategory.where("name LIKE ?", "%#{word}").pluck(:id)
-          return skinitem_category_ids.present? ? Post.where(skinitem_category_id: skinitem_category_ids) : []
+          skinitem_category_ids = SkinitemCategory.where("name LIKE ?", "%#{word}").pluck(:id) # SkinitemCategoryテーブルからnameが部分一致するレコードのIDを取得
+          return skinitem_category_ids.present? ? Post.where(skinitem_category_id: skinitem_category_ids) : [] # 取得したIDが存在する場合、それに対応するPostを取得。存在しない場合は空の配列を返す
       else
-        category_ids = Category.where("name LIKE ?", "%#{word}").pluck(:id)
-        return category_ids.present? ? Post.where(category_id: category_ids ) : []
+        category_ids = Category.where("name LIKE ?", "%#{word}").pluck(:id) # Categoryテーブルからnameが部分一致するレコードのIDを取得
+        return category_ids.present? ? Post.where(category_id: category_ids ) : [] # 取得したIDが存在する場合、それに対応するPostを取得。存在しない場合は空の配列を返す
       end
     end
 
     if search == "partial_match"
       if skin_type == "skin_concern"
-        skin_concern_ids = SkinConcern.where("name LIKE ?", "%#{word}%").pluck(:id)
-        return skin_concern_ids.present? ? Post.where(skin_concern_id: skin_concern_ids) : []
+        skin_concern_ids = SkinConcern.where("name LIKE ?", "%#{word}%").pluck(:id) # SkinConcernテーブルからnameが部分一致するレコードのIDを取得
+        return skin_concern_ids.present? ? Post.where(skin_concern_id: skin_concern_ids) : [] # 取得したIDが存在する場合、それに対応するPostを取得。存在しない場合は空の配列を返す
       elsif skin_type == "skinitem_category"
-        skinitem_category_ids = SkinitemCategory.where("name LIKE ?", "%#{word}%").pluck(:id)
-        return skinitem_category_ids.present? ? Post.where(skinitem_category_id: skinitem_category_ids) : []
+        skinitem_category_ids = SkinitemCategory.where("name LIKE ?", "%#{word}%").pluck(:id) # SkinitemCategoryテーブルからnameが部分一致するレコードのIDを取得
+        return skinitem_category_ids.present? ? Post.where(skinitem_category_id: skinitem_category_ids) : [] # 取得したIDが存在する場合、それに対応するPostを取得。存在しない場合は空の配列を返す
       else
-        category_ids = Category.where("name LIKE ?", "%#{word}%").pluck(:id)
-        return category_ids.present? ? Post.where(category_id: category_ids) : []
+        category_ids = Category.where("name LIKE ?", "%#{word}%").pluck(:id) # Categoryテーブルからnameが部分一致するレコードのIDを取得
+        return category_ids.present? ? Post.where(category_id: category_ids) : [] # 取得したIDが存在する場合、それに対応するPostを取得。存在しない場合は空の配列を返す
       end
     end
   end
