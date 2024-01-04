@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row main-row">
     <div class="col-2 mx-auto">
-      <%= render 'layouts/category', categories: @categories, skin_concerns: @skin_concerns %>
+      <%= render 'layouts/category2', categories: @categories, skin_concerns: @skin_concerns %>
     </div>
     <div class="col-10">
       <h1 class="mt-4"><strong>商品レビュー 一覧ページ</strong></h1>
       <p>
-        <%= link_to '新しい順', posts_path(order: "latest", parent_type: params[:parent_type], parent_id: params[:parent_id]), style: "text-decoration: none;" %>｜
-        <%= link_to '古い順', posts_path(order: "old", parent_type: params[:parent_type], parent_id: params[:parent_id]), style: "text-decoration: none;" %>｜
-        <%= link_to '評価の高い順', posts_path(order: "star_count", parent_type: params[:parent_type], parent_id: params[:parent_id]), style: "text-decoration: none;" %>
+        <%= link_to '新しい順', admin_posts_path(order: "latest", parent_type: params[:parent_type], parent_id: params[:parent_id]), style: "text-decoration: none;" %>｜
+        <%= link_to '古い順', admin_posts_path(order: "old", parent_type: params[:parent_type], parent_id: params[:parent_id]), style: "text-decoration: none;" %>｜
+        <%= link_to '評価の高い順', admin_posts_path(order: "star_count", parent_type: params[:parent_type], parent_id: params[:parent_id]), style: "text-decoration: none;" %>
       </p>
       <div class="base-container mw-xl">
         <div class="text-wrapper">

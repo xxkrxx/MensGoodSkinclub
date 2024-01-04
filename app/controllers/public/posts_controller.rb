@@ -80,11 +80,15 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    tags = Vision.get_image_data(post_params[:image])
 
     # レビューが正常に保存された場合の処理
     if @post.save
+      tags.each do |tag|
+        @post.tags.create(name: tag)
+      end
       flash[:notice] = "投稿が成功しました。"
-      redirect_to post_path(@post)
+      redirect_to post_path(@post.id)
     else
       flash[:alert] = "投稿に失敗しました。入力内容を確認してください。"
       render :new

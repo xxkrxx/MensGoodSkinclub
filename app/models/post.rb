@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   belongs_to :skinitem_category
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :tags, dependent: :destroy
 
   # スコープの定義
   scope :latest, -> { order(created_at: :desc) }
