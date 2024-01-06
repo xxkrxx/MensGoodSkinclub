@@ -37,11 +37,11 @@ module Vision
       if response_body['responses'].present? && response_body['responses'][0]['labelAnnotations'].present?
         response_body['responses'][0]['labelAnnotations'].pluck('description').take(3)
       else
-        if response_body['responses'][0]['error']['message'].present?
+        if response_body['responses'].present? && response_body['responses'][0].present? && response_body['responses'][0]['error'].present?
           raise response_body['responses'][0]['error']['message']
         else
           raise StandardError.new("Vision API Error")
-        end  
+        end
       end
     end
   end
