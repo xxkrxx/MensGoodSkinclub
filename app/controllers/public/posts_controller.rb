@@ -81,10 +81,10 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     tags = Vision.get_image_data(post_params[:image])
-
+    tags_ja = Translation.translate_word(tags)
     # レビューが正常に保存された場合の処理
     if @post.save
-      tags.each do |tag|
+      tags_ja.each do |tag|
         @post.tags.create(name: tag)
       end
       flash[:notice] = "投稿が成功しました。"
