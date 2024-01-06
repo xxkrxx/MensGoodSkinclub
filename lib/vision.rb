@@ -34,10 +34,14 @@ module Vision
       response = https.request(request, params)
       response_body = JSON.parse(response.body)
       # APIレスポンス出力
-      if (error = response_body['responses'][0]['error']).present?
-        raise error['message']
-      else
+      if response_body['responses'].present? && response_body['responses'][0]['labelAnnotations'].present?
         response_body['responses'][0]['labelAnnotations'].pluck('description').take(3)
+      else
+        if response_body['responses'][0]['error']['message'].present?
+          raise response_body['responses'][0]['error']['message']
+        else
+          raise StandardError.new("Vision API Error")
+        end  
       end
     end
   end
