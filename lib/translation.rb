@@ -20,7 +20,7 @@ module Translation
       request['Content-Type'] = 'application/json'
       response = https.request(request, params)
       response_body = JSON.parse(response.body)
-      response_body["data"]["translations"].pluck("translatedText")
+      response_body["data"]["translations"].pluck("translatedText")#byebugでresponse_bodyの中身を確認したものを記述
       # APIレスポンス出力
     end
   end

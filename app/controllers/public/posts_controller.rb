@@ -68,8 +68,26 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
+    if params[:post][:img_delete]
+      @post.tags.destroy_all
+      @post.image.purge
+    end
+
+    # 投稿画像があれば処理する
+    unless post_params[:image].blank?
+      tags = Vision.get_image_data(post_params[:image])
+      tags_ja = Translation.translate_word(tags)
+    end
+
     # レビューが正常に更新された場合の処理
     if @post.update(post_params)
+      # 投稿画像があれば処理する
+      unless post_params[:image].blank?
+        @post.tags.destroy_all
+        tags_ja.each do |tag|
+          @post.tags.create(name: tag)
+        end
+      end
       redirect_to post_path(@post)
     else
       render :edit
@@ -80,12 +98,21 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    tags = Vision.get_image_data(post_params[:image])
-    tags_ja = Translation.translate_word(tags)
+
+    # 投稿画像があれば処理する
+    unless post_params[:image].blank?
+      tags = Vision.get_image_data(post_params[:image])
+      tags_ja = Translation.translate_word(tags)
+    end
+
     # レビューが正常に保存された場合の処理
     if @post.save
-      tags_ja.each do |tag|
-        @post.tags.create(name: tag)
+      # 投稿画像があれば処理する
+      unless post_params[:image].blank?
+        @post.tags.destroy_all
+        tags_ja.each do |tag|
+          @post.tags.create(name: tag)
+        end
       end
       flash[:notice] = "投稿が成功しました。"
       redirect_to post_path(@post.id)

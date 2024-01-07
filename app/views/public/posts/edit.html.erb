@@ -4,28 +4,37 @@
        <h1 class="mt-4"><strong> レビュー編集画面</strong></h1>
         <%= render "public/shared/error_messages", resource: @post %>
         <%= form_with model: @post, url: post_path(@post), method: :patch do |f| %>
-    
+
             <div class="form-row mt-5">
               <span class="form-group col-3">商品画像</span>
               <div class="form-group col-3">
                 <%= f.file_field :image, class: "form-control-file user_image", accept: 'image/jpeg,image/png' %><!--jpegとpngのみの画像ファイルしか使えない-->
               </div>
             </div>
-    
+
+            <div class="row">
+              <div class="offset-3 col-3">
+                <%= f.label :img_delete do %>
+                  <%= f.check_box :img_delete %>
+                  画像を削除する
+                <% end %>
+              </div>
+            </div>
+
             <div class="form-row mt-3">
               <span class="form-group col-3">商品名</span>
               <div class="form-group col-3">
                 <%= f.text_field :productname, class: "form-control" %>
               </div>
             </div>
-    
+
             <div class="form-row mt-3">
               <span class="form-group col-3">使った商品の感想</span>
               <div class="form-group col-4">
                 <%= f.text_area :comment, class: "form-control", rows: 5 %>
               </div>
             </div>
-            
+
             <div class="form-row mt-3">
             <span class="col-3">肌悩み</span>
             <%= f.collection_select :skin_concern_id, SkinConcern.all, :id, :name ,  include_blank: "一番効果を感じた選択して下さい" %>
@@ -40,7 +49,7 @@
               <span class="col-3">カテゴリー</span>
               <%= f.collection_select :category_id, Category.all, :id, :name ,  include_blank: "選択して下さい" %>
             </div>
-    
+
             <div class="form-row mt-3">
               <span class="col-3">評価</span>
                 <div class="form-group" id="star">
@@ -58,13 +67,14 @@
                   starOn: "<%= asset_path('star-on.png') %>",
                   starOff: "<%= asset_path('star-off.png') %>",
                   starHalf: "<%= asset_path('star-half.png') %>",
+                  score: "<%= @post.star %>",
                   scoreName: 'post[star]',
                 };
                 raty(elem, opt);
               });
               </script>
             </div>
-        
+
             <div class="d-flex mt-5" style="flex-direction: row-reverse;">
             <%= f.submit "レビューを更新する",class: "btn btn-info " %>
             </div>
