@@ -81,7 +81,7 @@
               <p class="text-center" style="font-weight: bold;"></p>
               <div id="favorite_btn_<%= post.id %>" style=""></div>
             </div>
-            <%= link_to "削除", admin_post_path(post), method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-danger" %>
+            <%= link_to "削除", admin_post_path(id: post.id, user_id: @user.id), method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-danger" %>
           </div>
         </div>
       </div>

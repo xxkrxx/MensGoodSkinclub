@@ -10,8 +10,8 @@ module Translation
 
       # APIリクエスト用のJSONパラメータ
        params = { q: word_arr, target: 'ja' }.to_json # ""を付けてくれている役割
-      
-     
+
+
       # Google Cloud Vision APIにリクエスト
       uri = URI.parse(api_url)
       https = Net::HTTP.new(uri.host, uri.port)

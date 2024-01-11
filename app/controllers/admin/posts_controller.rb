@@ -44,8 +44,9 @@ class Admin::PostsController < ApplicationController
   # 投稿を削除するアクション
   def destroy
     # 指定されたIDに基づいて投稿を取得し、削除
+    user = User.find(params[:user_id])
     post = Post.find(params[:id])
     post.destroy
-    redirect_to admin_posts_path, notice: "レビューを削除しました。"
+    redirect_to admin_user_path(user), notice: "レビューを削除しました。"
   end
 end
