@@ -9,8 +9,8 @@ module Translation
       api_url = "https://translation.googleapis.com/language/translate/v2?key=#{ENV['GOOGLE_API_KEY']}"
 
       # APIリクエスト用のJSONパラメータ
-       params = { q: word_arr, target: 'ja' }.to_json
-      # ""を付けてくれている役割
+       params = { q: word_arr, target: 'ja' }.to_json # ""を付けてくれている役割
+      
      
       # Google Cloud Vision APIにリクエスト
       uri = URI.parse(api_url)
