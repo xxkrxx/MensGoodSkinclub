@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!
   # ユーザー一覧を取得
   def index
     @users = User.all.page(params[:page]).per(9)
