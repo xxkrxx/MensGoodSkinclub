@@ -32,7 +32,7 @@
           <p class="font-weight-bold">商品説明</p>
         </div>
         <div class="col-8">
-          <%= @post.comment %>
+          <%= simple_format(@post.comment, sanitize: true) %>
         </div>
       </div>
       <div class="row">

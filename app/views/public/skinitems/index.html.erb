@@ -64,7 +64,7 @@
                               <%= link_to "詳細を見る", skinitem_path(skinitem) %>
                             </p>
                             <p style="font-weight: bold;">
-                              <div id="favorite_btn_<%= skinitem.id %>" >
+                              <div id="acne_favorite_btn_<%= skinitem.id %>" >
                                 <%= render 'public/itemfavorites/btn', skinitem: skinitem %>
                               </div>
                             </p>
@@ -99,7 +99,7 @@
                               <%= link_to "詳細を見る", skinitem_path(skinitem) %>
                             </p>
                             <p style="font-weight: bold;">
-                              <div id="favorite_btn_<%= skinitem.id %>" >
+                              <div id="pore_favorite_btn_<%= skinitem.id %>" >
                                 <%= render 'public/itemfavorites/btn', skinitem: skinitem %>
                               </div>
                             </p>
@@ -134,7 +134,7 @@
                               <%= link_to "詳細を見る", skinitem_path(skinitem) %>
                             </p>
                             <p style="font-weight: bold;">
-                              <div id="favorite_btn_<%= skinitem.id %>" >
+                              <div id="whitening_favorite_btn_<%= skinitem.id %>" >
                                 <%= render 'public/itemfavorites/btn', skinitem: skinitem %>
                               </div>
                             </p>
@@ -148,7 +148,7 @@
                   <%= paginate @whitening, :param_name => 'whitening_page', params: { anchor: 'whitening' } %>　<!--params: { anchor: '〜〜〜' }アンカーリンクを使用する事でページネーションのある場所で実行した時にその状態のままページを変える事ができる-->
                 </div>
               </section>
-              
+
             </div>
           </div>
         </div>
