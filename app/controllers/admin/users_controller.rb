@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  
+ before_action :authenticate_admin!
   # すべてのユーザーの一覧を表示
   def index
     @users = User.all.page(params[:page]).per(10)
