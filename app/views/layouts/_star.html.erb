@@ -1,0 +1,16 @@
+<script>
+  $(document).on('turbolinks:load', function() {
+    let elem = document.querySelector('<%= elem %>');
+    if (elem == null) return;
+
+    elem.innerHTML = "";
+    let opt = {
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      score: "<%= star %>",
+      readOnly: <%= read_only %>,
+    };
+    raty(elem, opt);
+  });
+</script>

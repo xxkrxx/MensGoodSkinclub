@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   # ログインユーザーのみアクセス可能（indexアクションは例外）
   before_action :authenticate_user!, except: [:index]
+  before_action :find_post, only: [:show, :update, :edit, :destory]
 
   # レビュー一覧ページ
   def index
@@ -41,7 +42,7 @@ class Public::PostsController < ApplicationController
   # レビュー詳細ページ
   def show
     # 投稿が存在しない場合の処理
-    @post = Post.find_by(id: params[:id])
+    # @post = Post.find_by(id: params[:id])
     if @post.nil?
       flash[:alert] = "指定された投稿が見つかりません。"
       redirect_to root_path
@@ -53,7 +54,7 @@ class Public::PostsController < ApplicationController
 
   # レビュー編集ページ
   def edit
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
 
     # 不正なアクセスの場合の処理
     if @post.user != current_user
@@ -66,7 +67,7 @@ class Public::PostsController < ApplicationController
 
   # レビュー更新アクション
   def update
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
 
     if params[:post][:img_delete]
       @post.tags.destroy_all
@@ -124,8 +125,8 @@ class Public::PostsController < ApplicationController
 
   # レビュー削除アクション
   def destroy
-    post = Post.find(params[:id])
-    post.destroy
+    # @post = Post.find(params[:id])
+    @post.destroy
     redirect_to user_path(post.user), notice: "レビューを削除しました。"
   end
 
@@ -134,5 +135,9 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:productname, :image, :comment, :category_id, :skinitem_category_id, :skin_concern_id, :star)
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
   end
 end

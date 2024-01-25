@@ -65,22 +65,7 @@
         </div>
         <div class="col-8">
           <span id="star_<%= @post.id %>">
-            <script>
-              $(document).on('turbolinks:load', function() {
-                let elem = document.querySelector('#star_<%= @post.id %>');
-                if (elem == null) return;
-
-                elem.innerHTML = "";
-                let opt = {
-                  starOn: "<%= asset_path('star-on.png') %>",
-                  starOff: "<%= asset_path('star-off.png') %>",
-                  starHalf: "<%= asset_path('star-half.png') %>",
-                  score: "<%= @post.star %>",
-                  readOnly: true,
-                };
-                raty(elem, opt);
-              });
-            </script>
+            <%= render partial: "layouts/star", locals: {elem: "#star_#{@post.id}", star: @post.star, read_only: true} %>
           </span>
           <span id="favorite_btn_<%= @post.id %>" class="d-flex" style="flex-direction: row-reverse;">
             <%= render 'public/favorites/btn', post: @post %>
