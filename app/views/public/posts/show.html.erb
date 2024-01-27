@@ -19,46 +19,7 @@
       </div>
     </div>
     <div class="col-7 offset-1 mt-4">
-      <div class="row">
-        <div class="col-4">
-          <p class="font-weight-bold">商品名</p>
-        </div>
-        <div class="col-8">
-          <%= @post.productname %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <p class="font-weight-bold">商品説明</p>
-        </div>
-        <div class="col-8">
-          <%= simple_format(@post.comment, sanitize: true) %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <p class="font-weight-bold">肌悩み</p>
-        </div>
-        <div class="col-8">
-          <%= @post.skin_concern.name %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <p class="font-weight-bold">商品ブランド</p>
-        </div>
-        <div class="col-8">
-          <%= @post.skinitem_category.name %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <p class="font-weight-bold">カテゴリー</p>
-        </div>
-        <div class="col-8">
-          <%= @post.category.name %>
-        </div>
-      </div>
+      <%= render partial: "layouts/post_show", locals: {post: @post} %>
       <div class="row">
         <div class="col-4">
           <p class="font-weight-bold">評価</p>
