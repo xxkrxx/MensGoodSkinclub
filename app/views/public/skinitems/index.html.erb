@@ -14,30 +14,7 @@
             <div class="justify-content-center">
               <div class="card-deck">
                 <% @skinitems.each do |skinitem| %>
-                  <div class="text-card-container">
-                    <div class="card content-card border-dark">
-                      <div class="card-header p-0">
-                        <%= link_to skinitem_path(skinitem) do %>
-                          <%= image_tag skinitem.get_image(200, 200), style: "height:150px; width:200px;" %>
-                        <% end %>
-                      </div>
-                      <div class="card-body d-flex align-items-center">
-                        <div>
-                          <p class="card-title text-left">
-                            <%= truncate(skinitem.product_name, length: 10, omission: '...') %>
-                          </p>
-                          <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
-                            <%= link_to "詳細を見る", skinitem_path(skinitem) %>
-                          </p>
-                          <p style="font-weight: bold;">
-                            <div id="favorite_btn_<%= skinitem.id %>" >
-                              <%= render 'public/itemfavorites/btn', skinitem: skinitem %>
-                            </div>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <%= render 'public/skinitems/skinitem', skinitem: skinitem, category: 'all' %>
                 <% end %>
               </div>
               <div class="row mx-auto justify-content-center">
@@ -48,30 +25,7 @@
                 <h1 class="mt-4"><strong>ニキビに良い商品</strong></h1>
                 <div class="card-deck">
                   <% @acne.each do |skinitem| %>
-                    <div class="text-card-container mt-4">
-                      <div class="card content-card border-dark">
-                        <div class="card-header p-0">
-                          <%= link_to skinitem_path(skinitem) do %>
-                            <%= image_tag skinitem.get_image(200, 200), style: "height:150px; width:200px;" %>
-                          <% end %>
-                        </div>
-                        <div class="card-body d-flex align-items-center">
-                          <div>
-                            <p class="card-title text-left">
-                              <%= truncate(skinitem.product_name, length: 10, omission: '...') %>
-                            </p>
-                            <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
-                              <%= link_to "詳細を見る", skinitem_path(skinitem) %>
-                            </p>
-                            <p style="font-weight: bold;">
-                              <div id="acne_favorite_btn_<%= skinitem.id %>" >
-                                <%= render 'public/itemfavorites/btn', skinitem: skinitem %>
-                              </div>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <%= render 'public/skinitems/skinitem', skinitem: skinitem, category: 'acne' %>
                   <% end %>
                 </div>
                 <div class="row mx-auto justify-content-center">
@@ -83,30 +37,7 @@
                 <h1 class="mt-4"><strong>毛穴に良い商品</strong></h1>
                 <div class="card-deck">
                   <% @pore.each do |skinitem| %>
-                    <div class="text-card-container mt-4">
-                      <div class="card content-card border-dark">
-                        <div class="card-header p-0">
-                          <%= link_to skinitem_path(skinitem) do %>
-                            <%= image_tag skinitem.get_image(200, 200), style: "height:150px; width:200px;" %>
-                          <% end %>
-                        </div>
-                        <div class="card-body d-flex align-items-center">
-                          <div>
-                            <p class="card-title text-left">
-                              <%= truncate(skinitem.product_name, length: 10, omission: '...') %>
-                            </p>
-                            <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
-                              <%= link_to "詳細を見る", skinitem_path(skinitem) %>
-                            </p>
-                            <p style="font-weight: bold;">
-                              <div id="pore_favorite_btn_<%= skinitem.id %>" >
-                                <%= render 'public/itemfavorites/btn', skinitem: skinitem %>
-                              </div>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <%= render 'public/skinitems/skinitem', skinitem: skinitem, category: 'pore' %>
                   <% end %>
                 </div>
                 <div class="row mx-auto justify-content-center">
@@ -118,30 +49,7 @@
                 <h1 class="mt-4"><strong>美白に良い商品</strong></h1>
                 <div class="card-deck">
                   <% @whitening.each do |skinitem| %>
-                    <div class="text-card-container mt-4">
-                      <div class="card content-card border-dark">
-                        <div class="card-header p-0">
-                          <%= link_to skinitem_path(skinitem) do %>
-                            <%= image_tag skinitem.get_image(200, 200), style: "height:150px; width:200px;" %>
-                          <% end %>
-                        </div>
-                        <div class="card-body d-flex align-items-center">
-                          <div>
-                            <p class="card-title text-left">
-                              <%= truncate(skinitem.product_name, length: 10, omission: '...') %>
-                            </p>
-                            <p class="card-title text-left" style="font-weight: bold; font-size: 1.2em;">
-                              <%= link_to "詳細を見る", skinitem_path(skinitem) %>
-                            </p>
-                            <p style="font-weight: bold;">
-                              <div id="whitening_favorite_btn_<%= skinitem.id %>" >
-                                <%= render 'public/itemfavorites/btn', skinitem: skinitem %>
-                              </div>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <%= render 'public/skinitems/skinitem', skinitem: skinitem, category: 'whitening' %>
                   <% end %>
                 </div>
                 <div class="row mx-auto justify-content-center">
