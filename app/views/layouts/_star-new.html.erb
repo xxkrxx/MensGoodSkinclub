@@ -1,6 +1,6 @@
 <script>
   $(document).on('turbolinks:load', function() {
-    let elem = document.querySelector('<%= post_raty %>');
+    let elem = document.querySelector('<%= elem %>');
     if (elem == null) return;
 
     elem.innerHTML = "";
@@ -9,7 +9,7 @@
       starOff: "<%= asset_path('star-off.png') %>",
       starHalf: "<%= asset_path('star-half.png') %>",
       score: "<%= star %>",
-      readOnly: <%= read_only %>,
+      scoreName: "<%= score_name %>",
     };
     raty(elem, opt);
   });

@@ -14,7 +14,7 @@
           <%= link_to "詳細を見る", skinitem_path(skinitem) %>
         </p>
         <p style="font-weight: bold;">
-          <% if category == 'all' %>
+          <% if category == 'all' %><!--if文でリファクタリング　categoryの部分は自分が分かりやすい名前で決めてOK -->
             <div id="favorite_btn_<%= skinitem.id %>" >
               <%= render 'public/itemfavorites/btn', skinitem: skinitem %>
             </div>
@@ -36,3 +36,7 @@
     </div>
   </div>
 </div>
+
+
+
+
